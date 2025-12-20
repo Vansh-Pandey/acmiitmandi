@@ -1,0 +1,206 @@
+[
+  {
+    "name": "Vansh Pandey",
+    "chapter": "ACM",
+    "role": "Core Member",
+    "image": "dataset/images/acm/vansh_pandey.jpg"
+  },
+  {
+    "name": "Md Hasan Raza",
+    "chapter": "ACM",
+    "role": "Core Member",
+    "image": "dataset/images/acm/md_hasan_raza.jpg"
+  },
+  {
+    "name": "Kartik Verma",
+    "chapter": "ACM",
+    "role": "Coordinator",
+    "image": "dataset/images/acm/kartik_verma.jpg"
+  },
+  {
+    "name": "Arihant Kumar Jain",
+    "chapter": "ACM",
+    "role": "Core Member",
+    "image": "dataset/images/acm/arihant_kumar_jain.jpg"
+  },
+  {
+    "name": "Sharath Subramanya",
+    "chapter": "ACM",
+    "role": "Co-Coordinator",
+    "image": "dataset/images/acm/sharath_subramanya.jpg"
+  },
+  {
+    "name": "Shivam Soni",
+    "chapter": "ACM",
+    "role": "Core Member",
+    "image": "dataset/images/acm/shivam_soni.jpg"
+  },
+  {
+    "name": "Priyansh Saha",
+    "chapter": "ACM",
+    "role": "Core Member",
+    "image": "dataset/images/acm/priyansh_saha.jpg"
+  },
+  {
+    "name": "Saksham Setia",
+    "chapter": "ACM",
+    "role": "Core Member",
+    "image": "dataset/images/acm/saksham_setia.jpg"
+  },
+  {
+    "name": "Garv Jain",
+    "chapter": "ACM",
+    "role": "Core Member",
+    "image": "dataset/images/acm/garv_jain.jpg"
+  },
+  {
+    "name": "Utkarsh Sahu",
+    "chapter": "ACM",
+    "role": "Core Member",
+    "image": "dataset/images/acm/utkarsh_sahu.jpg"
+  },
+  {
+    "name": "Dishant Jha",
+    "chapter": "ACM",
+    "role": "Core Member",
+    "image": "dataset/images/acm/dishant_jha.jpg"
+  },
+  {
+    "name": "Vaibhav Pal",
+    "chapter": "ACM",
+    "role": "Core Member",
+    "image": "dataset/images/acm/vaibhav_pal.jpg"
+  },
+  {
+    "name": "Kripa Kanodia",
+    "chapter": "ACMW",
+    "role": "Core Member",
+    "image": "dataset/images/acmw/kripa_kanodia.jpg"
+  },
+  {
+    "name": "Divyansh Jindal",
+    "chapter": "ACM",
+    "role": "Core Member",
+    "image": "dataset/images/acm/divyansh_jindal.jpg"
+  },
+  {
+    "name": "Prikshya",
+    "chapter": "ACMW",
+    "role": "Core Member",
+    "image": "dataset/images/acmw/prikshya.jpg"
+  },
+  {
+    "name": "Divyansh Negi",
+    "chapter": "ACM",
+    "role": "Core Member",
+    "image": "dataset/images/acm/divyansh_negi.jpg"
+  },
+  {
+    "name": "Akshat Mittal",
+    "chapter": "ACM",
+    "role": "Core Member",
+    "image": "dataset/images/acm/akshat_mittal.jpg"
+  },
+  {
+    "name": "Krati Yadav",
+    "chapter": "ACMW",
+    "role": "Core Member",
+    "image": "dataset/images/acmw/krati_yadav.jpg"
+  },
+  {
+    "name": "Riddhi Maheshwari",
+    "chapter": "ACMW",
+    "role": "Core Member",
+    "image": "dataset/images/acmw/riddhi_maheshwari.jpg"
+  },
+  {
+    "name": "Arnav Thakur",
+    "chapter": "ACM",
+    "role": "Core Member",
+    "image": "dataset/images/acm/arnav_thakur.jpg"
+  },
+  {
+    "name": "Anshika goel",
+    "chapter": "ACMW",
+    "role": "Core Member",
+    "image": "dataset/images/acmw/anshika_goel.jpg"
+  },
+  {
+    "name": "Suhanee Gupta",
+    "chapter": "ACMW",
+    "role": "Core Member",
+    "image": "dataset/images/acmw/suhanee_gupta.jpg"
+  },
+  {
+    "name": "Ojasvi Jain",
+    "chapter": "ACMW",
+    "role": "Core Member",
+    "image": "dataset/images/acmw/ojasvi_jain.jpg"
+  },
+  {
+    "name": "Ramneet kour",
+    "chapter": "ACMW",
+    "role": "Core Member",
+    "image": "dataset/images/acmw/ramneet_kour.jpg"
+  },
+  {
+    "name": "Rajsi Sangra",
+    "chapter": "ACMW",
+    "role": "Coordinator",
+    "image": "dataset/images/acmw/rajsi_sangra.jpg"
+  },
+  {
+    "name": "Pranjal",
+    "chapter": "ACMW",
+    "role": "Mentor (ACMW)",
+    "image": "dataset/images/acmw/pranjal.jpg"
+  },
+  {
+    "name": "Manasvi Kyatham",
+    "chapter": "ACMW",
+    "role": "Mentor (ACMW)",
+    "image": "dataset/images/acmw/manasvi_kyatham.jpg"
+  },
+  {
+    "name": "Arpita Kumari",
+    "chapter": "ACMW",
+    "role": "Mentor (ACMW)",
+    "image": "dataset/images/acmw/arpita_kumari.jpg"
+  },
+  {
+    "name": "Tarun Srivastava",
+    "chapter": "ACM",
+    "role": "Mentor(ACM)",
+    "image": "dataset/images/acm/tarun_srivastava.jpg"
+  },
+  {
+    "name": "Ishika Agarwal",
+    "chapter": "ACMW",
+    "role": "Co-Coordinator",
+    "image": "dataset/images/acmw/ishika_agarwal.jpg"
+  },
+  {
+    "name": "Soumya Sharma",
+    "chapter": "ACMW",
+    "role": "Mentor (ACMW)",
+    "image": "dataset/images/acmw/soumya_sharma.jpg"
+  },
+  {
+    "name": "Luv Sharma",
+    "chapter": "ACM",
+    "role": "Mentor(ACM)",
+    "image": "dataset/images/acm/luv_sharma.jpg"
+  },
+  {
+    "name": "Mahak Agarwal",
+    "chapter": "ACMW",
+    "role": "Core Member",
+    "image": "dataset/images/acmw/mahak_agarwal.jpg"
+  },
+  {
+    "name": "Abhijeet Kumar Jha",
+    "chapter": "ACM",
+    "role": "Mentor (ACM)",
+    "image": "dataset/images/acm/abhijeet_kumar_jha.jpg"
+  }
+]
