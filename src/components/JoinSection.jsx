@@ -205,6 +205,16 @@ const cardStyles = [
   { bg: "#3a1020", border: "#EC4899" },
   { bg: "#042f2e", border: "#14B8A6" },
 ];
+const LinkedInPixelIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+    <rect x="1" y="1" width="3" height="3" />
+    <rect x="1" y="5" width="3" height="10" />
+    <rect x="6" y="6" width="3" height="9" />
+    <rect x="10" y="6" width="5" height="3" />
+    <rect x="10" y="10" width="5" height="5" />
+  </svg>
+);
+
 
 const Join = () => {
   const [activeCard, setActiveCard] = useState(null);
@@ -342,28 +352,52 @@ const Join = () => {
             className="mb-5 text-neutral-300"
             style={{ 
               fontFamily: pixelFont,
-              fontSize: '10px',
+              fontSize: '14px',
               lineHeight: '1.8'
             }}
           >
             Ready to be part of the community?
           </p>
-          <a
-            href="https://www.instagram.com/acm_iitmandi/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-yellow-400 text-black font-bold
-              px-7 py-3 border-4 border-yellow-700
-              hover:shadow-[0_0_20px_rgba(248,184,0,0.6)]
-              transition-shadow"
-            style={{ 
-              fontFamily: pixelFont,
-              fontSize: '10px',
-              letterSpacing: '0.05em'
-            }}
-          >
-            Join Us on Instagram
-          </a>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            {/* Instagram */}
+            <a
+              href="https://www.instagram.com/acm_iitmandi/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-yellow-400 text-black font-bold
+                px-7 py-3 border-4 border-yellow-700
+                hover:shadow-[0_0_20px_rgba(248,184,0,0.6)]
+                transition-shadow"
+              style={{ 
+                fontFamily: pixelFont,
+                fontSize: '10px',
+                letterSpacing: '0.05em'
+              }}
+            >
+              <PixelIcon pattern={pixelIcons[1]} />
+              Instagram
+            </a>
+
+            {/* LinkedIn */}
+            <a
+              href="https://www.linkedin.com/company/acm-iit-mandi/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-blue-500 text-black font-bold
+                px-7 py-3 border-4 border-blue-800
+                hover:shadow-[0_0_20px_rgba(59,130,246,0.6)]
+                transition-shadow"
+              style={{ 
+                fontFamily: pixelFont,
+                fontSize: '10px',
+                letterSpacing: '0.05em'
+              }}
+            >
+              <LinkedInPixelIcon />
+              LinkedIn
+            </a>
+          </div>
+
         </div>
       </main>
     </div>
