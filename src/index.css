@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+/* Import Minecraft font */
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
+/* ===== CSS Variables - Minecraft Palette ===== */
+:root {
+  --mc-grass-top: #5d9a3c;
+  --mc-dirt: #866043;
+  --mc-dirt-dark: #593d29;
+  --mc-stone: #8b8b8b;
+  --mc-stone-dark: #6b6b6b;
+  --mc-wood: #9c6b30;
+  --mc-gold: #f8b800;
+  --mc-diamond: #5decf5;
+  --mc-emerald: #17dd62;
+  --mc-sky-top: #7ba4db;
+  --mc-sky-bottom: #a5c8e8;
+
+  --text-white: #ffffff;
+  --text-shadow: #3f3f3f;
+}
+
+/* ===== Base Reset ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+
+body {
+  font-family: 'Silkscreen', cursive;
+  background: var(--mc-dirt-dark);
+  color: var(--text-white);
+  line-height: 1.4;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Crect x='3' y='3' width='6' height='6' fill='%235decf5'/%3E%3Crect x='9' y='3' width='6' height='6' fill='%235decf5'/%3E%3Crect x='15' y='3' width='6' height='6' fill='%235decf5'/%3E%3Crect x='9' y='9' width='6' height='6' fill='%239c6b30'/%3E%3Crect x='15' y='15' width='6' height='6' fill='%239c6b30'/%3E%3Crect x='21' y='21' width='6' height='6' fill='%239c6b30'/%3E%3Crect x='27' y='27' width='6' height='6' fill='%239c6b30'/%3E%3Crect x='33' y='33' width='6' height='6' fill='%239c6b30'/%3E%3Crect x='3' y='9' width='6' height='6' fill='%233ac4b8'/%3E%3Crect x='21' y='3' width='6' height='6' fill='%233ac4b8'/%3E%3C/svg%3E") 0 0, auto;
+}
+
+/* ===== Keyframe Animations ===== */
+@keyframes cloudMove {
+  0% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+
+@keyframes bounceArrow {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes idleBob {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes idleBobFlipped {
+
+  0%,
+  100% {
+    transform: scaleX(-1) translateY(0);
+  }
+
+  50% {
+    transform: scaleX(-1) translateY(-3px);
+  }
+}
+
+@keyframes nameTagBob {
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-3px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spawnIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sparkle {
+
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: scale(1.15) rotate(90deg);
+    opacity: 1;
+  }
+}
