@@ -129,7 +129,7 @@ const HeroSection = () => {
                   className="w-128 md:w-154 lg:w-180 h-auto"
                   style={{
                     imageRendering: 'pixelated',
-                    transform: 'scale(1.5)',
+                    transform: 'scale(0.5)',
                     transformOrigin: 'center',
                   }}
                 />

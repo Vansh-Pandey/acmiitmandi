@@ -5,10 +5,10 @@ const MinecraftHotbar = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const navItems = [
-    { name: "Team", icon: "💎", path: "/team" },
-    { name: "Events", icon: "🪓", path: "/events" },
-    { name: "About", icon: "⚔️", path: "#about" },
-    { name: "Contact", icon: "🌿", path: "#contact" },
+    { name: "Team", icon: "/diamond.svg", path: "/team" },
+    { name: "Events", icon: "/axe.svg", path: "/events" },
+    { name: "About", icon: "/nametag.svg", path: "#about" },
+    { name: "Contact", icon: "/horn.svg", path: "#contact" },
     { name: "", icon: "" },
     { name: "", icon: "" },
     { name: "", icon: "" },
@@ -54,18 +54,25 @@ const MinecraftHotbar = () => {
         )}
       </div>
 
-      {/* XP BAR */}
-      <div className="relative w-[364px] mb-1">
-        <div className="w-full h-[10px] bg-[#000000CC] border-[2px] border-black flex items-center p-[1px]">
-          <div className="h-full bg-[#7cfc00] w-[15%] shadow-[inset_0_2px_0_#adff2f]" />
-        </div>
+      {/* XP BAR IMAGE */}
+      <div className="relative w-[390px] mt-[16px] mb-1 select-none">
+        <img
+          src="/xp_bar.png"   
+          alt="Minecraft XP Bar"
+          className="w-full h-auto pointer-events-none"
+          style={{ imageRendering: 'pixelated' }}
+        />
         <span
-          className="absolute -top-5 left-1/2 -translate-x-1/2 text-[#7cfc00] text-lg font-bold tracking-tight"
-          style={{ textShadow: '2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000' }}
+          className="absolute -top-6 left-1/2 -translate-x-1/2
+                    text-[#7CFC00] text-lg font-extrabold"
+          style={{
+            textShadow:
+              '2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000',
+          }}
         >
-          13
         </span>
       </div>
+
 
       {/* HOTBAR */}
       <div className="relative flex items-center bg-[#00000066] border-[4px] border-black p-[1px]">
@@ -86,11 +93,17 @@ const MinecraftHotbar = () => {
             onMouseLeave={() => setHoveredIndex(null)}
             className="relative w-[42px] h-[42px] flex items-center justify-center cursor-pointer z-10"
           >
-            <span className="text-2xl drop-shadow-[2px_2px_0_rgba(0,0,0,0.5)]">
-              {item.icon}
-            </span>
+            {item.icon && (
+              <img
+                src={item.icon}
+                alt={item.name}
+                className="w-9 h-9 object-contain drop-shadow-[2px_2px_0_rgba(0,0,0,0.5)]"
+                draggable={false}
+              />
+            )}
           </div>
         ))}
+
 
         {/* SELECTOR */}
         <div 

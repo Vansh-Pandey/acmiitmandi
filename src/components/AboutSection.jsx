@@ -25,13 +25,34 @@ const AboutSection = () => {
     };
   }, []);
 
+  const highlights = [
+    {
+      title: "INNOVATE",
+      desc: "Push boundaries with cutting-edge projects",
+      bg: "/redstone_bg.png",
+      img: "/redstone.png",
+    },
+    {
+      title: "COLLABORATE",
+      desc: "Build together, learn together, grow together",
+      bg: "/farm.png",
+      img: "/emerald.png",
+    },
+    {
+      title: "COMPETE",
+      desc: "Hackathons, coding contests & tech challenges",
+      bg: "/village.png",
+      img: "/pillager.png",
+    },
+  ];
+
 
 
   return (
     <section
       ref={sectionRef}
       id="about"
-      className="min-h-screen bg-black text-white relative overflow-hidden flex items-center py-20"
+      className="min-h-screen bg-black text-white relative flex items-center py-20"
     >
       {/* Background - Same as Hero but with minecraft_bg2.png */}
       <div
@@ -100,7 +121,7 @@ const AboutSection = () => {
               </div>
 
               <video
-                src="/steve-dance-transparent.webm"
+                src="/blaze.webm"
                 autoPlay
                 loop
                 muted
@@ -153,43 +174,61 @@ const AboutSection = () => {
 
             {/* Key Highlights */}
             <div className="space-y-4 pt-4">
-              {[
-                {title: "INNOVATE", desc: "Push boundaries with cutting-edge projects" },
-                {title: "COLLABORATE", desc: "Build together, learn together, grow together" },
-                {title: "COMPETE", desc: "Hackathons, coding contests & tech challenges" },
-              ].map((item, index) => (
+            {highlights.map((item, index) => (
+            <div
+              key={index}
+              className={`group relative transition-all duration-300 hover:scale-[1.05]
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+              style={{ transitionDelay: `${600 + index * 150}ms` }}
+            >
+              {/* Clipped card part */}
+              <div
+                className="group relative overflow-hidden rounded-lg p-4"
+                style={{
+                  background: "rgba(0, 0, 0, 0.65)",
+                  border: "2px solid rgba(255,255,255,0.15)",
+                  backdropFilter: "blur(4px)",
+                }}
+              >
+                {/* bg hover */}
                 <div
-                  key={index}
-                  className={`flex items-start gap-4 p-4 rounded-lg transition-all duration-500 hover:scale-105 ${isVisible ? "opacity-400 translate-y-0" : "opacity-0 translate-y-4"
-                    }`}
+                  className="absolute inset-0 opacity-0 scale-110 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100"
                   style={{
-                    transitionDelay: `${600 + index * 150}ms`,
-                    background: "rgba(255, 255, 255, 0.03)",
-                    border: "2px solid rgba(255, 255, 255, 0.1)",
-                    backdropFilter: "blur(4px)",
+                    backgroundImage: `url(${item.bg})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    imageRendering: "pixelated",
                   }}
-                >
-                  <div>
-                    <h3
-                      className="text-2xl font-bold text-white mb-1"
-                      style={{
-                        fontFamily: "'Minecraft', monospace",
-                        textShadow: "2px 2px 0 #000000",
-                      }}
-                    >
-                      {item.title}
-                    </h3>
-                    <p
-                      className="text-gray-300 text-lg"
-                      style={{
-                        fontFamily: "'Minecraft', monospace",
-                      }}
-                    >
-                      {item.desc}
-                    </p>
-                  </div>
+                />
+                <div className="absolute inset-0 bg-black/60" />
+
+                {/* text */}
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-bold mb-1">{item.title}</h3>
+                  <p className="text-gray-300 text-lg">{item.desc}</p>
                 </div>
-              ))}
+              </div>
+
+              {/* pop out image (escapes panel) */}
+              <img
+                src={item.img}
+                alt=""
+                className="
+                  pointer-events-none
+                  absolute -right-16 -bottom-16
+                  w-44
+                  opacity-0 translate-y-8 scale-90
+                  transition-all duration-300 ease-out
+                  group-hover:opacity-100
+                  group-hover:translate-y-0
+                  group-hover:scale-110
+                "
+                style={{ imageRendering: "pixelated" }}
+              />
+            </div>
+
+            ))}
+
             </div>
           </div>
         </div>
