@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import InfiniteMenu from "./InfiniteMenu";
 
 const AboutSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,26 +25,28 @@ const AboutSection = () => {
     };
   }, []);
 
-  const aboutContent = [
+  const highlights = [
     {
-      image: './about/innovation.jpg',
-      link: '#',
-      title: 'INNOVATION',
-      description: ''
+      title: "INNOVATE",
+      desc: "Push boundaries with cutting-edge projects",
+      bg: "/redstone_bg.png",
+      img: "/redstone.png",
     },
     {
-      image: './about/community.png',
-      link: '#',
-      title: 'COMMUNITY',
-      description: ''
+      title: "COLLABORATE",
+      desc: "Build together, learn together, grow together",
+      bg: "/farm.png",
+      img: "/emerald.png",
     },
     {
-      image: './about/events.png',
-      link: '#',
-      title: 'EVENTS',
-      description: ''
+      title: "COMPETE",
+      desc: "Hackathons, coding contests & tech challenges",
+      bg: "/village.png",
+      img: "/pillager.png",
     },
   ];
+
+
 
   return (
     <section
@@ -120,7 +121,7 @@ const AboutSection = () => {
               </div>
 
               <video
-                src="/steve-dance-transparent.webm"
+                src="/blaze.webm"
                 autoPlay
                 loop
                 muted
@@ -133,14 +134,14 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* Right Side - About Title + InfiniteMenu */}
+          {/* Right Side - About Content */}
           <div
-            className={`space-y-6 transition-all duration-1000 ease-out ${isVisible ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+            className={`space-y-8 transition-all duration-1000 ease-out ${isVisible ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
               }`}
             style={{ transitionDelay: "400ms" }}
           >
             {/* Section Title */}
-            <div className="space-y-2">
+            <div className="space-y-4">
               <h2
                 className="text-5xl md:text-6xl lg:text-7xl font-bold"
                 style={{
@@ -160,11 +161,74 @@ const AboutSection = () => {
               />
             </div>
 
-            {/* InfiniteMenu */}
-            <div className="relative h-[600px] w-full">
+            {/* Description */}
+            <p
+              className="text-lg md:text-xl text-gray-300 leading-relaxed"
+              style={{
+                fontFamily: "'Minecraft', monospace",
+                textShadow: "2px 2px 0 #000000",
+              }}
+            >
+              We are the <span className="text-emerald-400">ACM Student Chapter</span> at IIT Mandi — a community of passionate coders, builders, and innovators exploring the frontiers of computing.
+            </p>
 
+            {/* Key Highlights */}
+            <div className="space-y-4 pt-4">
+            {highlights.map((item, index) => (
+            <div
+              key={index}
+              className={`group relative transition-all duration-300 hover:scale-[1.05]
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+              style={{ transitionDelay: `${600 + index * 150}ms` }}
+            >
+              {/* Clipped card part */}
+              <div
+                className="group relative overflow-hidden rounded-lg p-4"
+                style={{
+                  background: "rgba(0, 0, 0, 0.65)",
+                  border: "2px solid rgba(255,255,255,0.15)",
+                  backdropFilter: "blur(4px)",
+                }}
+              >
+                {/* bg hover */}
+                <div
+                  className="absolute inset-0 opacity-0 scale-110 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100"
+                  style={{
+                    backgroundImage: `url(${item.bg})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    imageRendering: "pixelated",
+                  }}
+                />
+                <div className="absolute inset-0 bg-black/60" />
 
-              <InfiniteMenu items={aboutContent} scale={1} />
+                {/* text */}
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-bold mb-1">{item.title}</h3>
+                  <p className="text-gray-300 text-lg">{item.desc}</p>
+                </div>
+              </div>
+
+              {/* pop out image (escapes panel) */}
+              <img
+                src={item.img}
+                alt=""
+                className="
+                  pointer-events-none
+                  absolute -right-16 -bottom-16
+                  w-44
+                  opacity-0 translate-y-8 scale-90
+                  transition-all duration-300 ease-out
+                  group-hover:opacity-100
+                  group-hover:translate-y-0
+                  group-hover:scale-110
+                "
+                style={{ imageRendering: "pixelated" }}
+              />
+            </div>
+
+            ))}
+
             </div>
           </div>
         </div>
