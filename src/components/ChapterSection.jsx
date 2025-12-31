@@ -31,29 +31,47 @@ export const ChapterSection = ({ chapterName, members, description }) => {
         }
     };
 
+    const isAcm = chapterName === 'ACM';
+
     return (
-        <section className={`chapter-section ${chapterName.toLowerCase()}`}>
+        <section className="max-w-[1300px] mx-auto py-12 px-6 mb-16">
             {/* Chapter Header */}
-            <div className="chapter-header">
-                <h2 className="chapter-title">
-                    <span className={`chapter-icon ${chapterName.toLowerCase()}-icon`} />
-                    {chapterName === 'ACM' ? 'ACM Chapter' : 'ACM-W Chapter'}
+            <div className="flex flex-col items-center text-center mb-12 gap-6">
+                <h2 className="font-silkscreen text-[clamp(1.2rem,3vw,1.6rem)] font-bold inline-flex items-center justify-center gap-4 text-white py-6 px-14 bg-[#6d6d6d] border-4"
+                    style={{
+                        textShadow: '3px 3px 0 #000',
+                        borderColor: '#fff #555 #555 #fff'
+                    }}>
+                    <span className={`w-7 h-7 border-2 border-black ${isAcm ? 'bg-gradient-to-br from-mc-diamond to-[#3ac4b8]' : 'bg-gradient-to-br from-[#ff69b4] to-[#ff1493]'}`}
+                        style={{
+                            boxShadow: isAcm ? '0 0 12px rgba(93, 236, 245, 0.6)' : '0 0 12px rgba(255, 105, 180, 0.6)'
+                        }}
+                    />
+                    {isAcm ? 'ACM Chapter' : 'ACM-W Chapter'}
                 </h2>
-                <p className="chapter-description">{description}</p>
+                <p className="font-silkscreen text-[0.8rem] text-[#ccc] max-w-[600px] mx-auto leading-relaxed text-center"
+                    style={{ textShadow: '1px 1px 0 #000' }}>
+                    {description}
+                </p>
             </div>
 
             {/* Members Container */}
-            <div className="members-container">
+            <div className="flex flex-col gap-12">
                 {/* Leadership Carousel */}
                 {leadership.length > 0 && (
-                    <div className="leadership-section">
-                        <h3 className="section-subtitle">
-                            <span className="star-icon">★</span> Leadership
+                    <div className="relative mb-8 pt-[60px]">
+                        <h3 className="font-silkscreen text-[1.3rem] text-mc-emerald mb-8 flex items-center gap-2 pb-[10px]"
+                            style={{ textShadow: '2px 2px 0 #000' }}>
+                            <span className="text-mc-gold">★</span> Leadership
                         </h3>
-                        <div className="carousel-wrapper">
+                        <div className="relative overflow-hidden py-8">
                             <button
                                 onClick={() => scrollCarousel(-1)}
-                                className="carousel-nav prev"
+                                className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-[#8b8b8b] text-white font-silkscreen text-2xl z-20 flex items-center justify-center border-4 transition-all hover:bg-[#9d9d9d] active:scale-95"
+                                style={{
+                                    borderColor: '#fff #555 #555 #fff',
+                                    textShadow: '1px 1px 0 #000'
+                                }}
                                 aria-label="Previous"
                             >
                                 ‹
@@ -65,7 +83,11 @@ export const ChapterSection = ({ chapterName, members, description }) => {
                             </div>
                             <button
                                 onClick={() => scrollCarousel(1)}
-                                className="carousel-nav next"
+                                className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-[#8b8b8b] text-white font-silkscreen text-2xl z-20 flex items-center justify-center border-4 transition-all hover:bg-[#9d9d9d] active:scale-95"
+                                style={{
+                                    borderColor: '#fff #555 #555 #fff',
+                                    textShadow: '1px 1px 0 #000'
+                                }}
                                 aria-label="Next"
                             >
                                 ›
@@ -75,11 +97,12 @@ export const ChapterSection = ({ chapterName, members, description }) => {
                 )}
 
                 {/* Core Team Grid */}
-                <div className="core-section">
-                    <h3 className="section-subtitle">
-                        <span className="code-icon">&lt;/&gt;</span> Core Team
+                <div className="pt-5">
+                    <h3 className="font-silkscreen text-[1.3rem] text-mc-emerald mb-8 flex items-center gap-2 pb-[10px]"
+                        style={{ textShadow: '2px 2px 0 #000' }}>
+                        <span className="text-mc-diamond">&lt;/&gt;</span> Core Team
                     </h3>
-                    <div className="members-grid core-grid">
+                    <div className="members-grid">
                         {coreMembers.map((member, index) => (
                             <MemberCard key={member.name} member={member} index={index} isLeadership={false} />
                         ))}
