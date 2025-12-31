@@ -1,5 +1,5 @@
 import { Calendar, MapPin, Users, Clock } from "lucide-react";
-import RotatingCube from "./Rotatingcube.jsx";
+import RotatingCube from "./RotatingCube.jsx";
 
 const categoryTheme = {
   contest: { color: "#ef4444", icon: "⚔️", label: "CONTEST" },
@@ -7,7 +7,7 @@ const categoryTheme = {
   session: { color: "#22c55e", icon: "👥", label: "SESSION" },
 };
 
-export function EventCard({
+export function EventCard({ 
   title,
   description,
   category,
@@ -136,7 +136,7 @@ export function EventCard({
             }
           `}</style>
 
-          {/* Pixel art corner decorations */}
+          {/* Pixel art corner decorationss */}
           <div
             className="absolute top-0 left-0 w-4 h-4"
             style={{
@@ -259,3 +259,4 @@ export function EventCard({
     </div>
   );
 }
+
