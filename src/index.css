@@ -1,7 +1,7 @@
-@import "tailwindcss";
-
-/* Import Minecraft font */
+/* Import Minecraft font - must come first */
 @import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
+@import "tailwindcss";
 
 /* ===== Tailwind Theme - Minecraft Palette ===== */
 @theme {
