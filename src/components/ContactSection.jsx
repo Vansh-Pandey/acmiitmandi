@@ -182,7 +182,7 @@ const ContactSection = () => {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-2">
-                    <label className="text-[#3f3f3f] text-sm font-bold">NAME</label>
+                    <label className="text-[#3f3f3f] text-sm font-bold" style={{ fontFamily: "MinecraftRegular, monospace" }}>NAME</label>
                     <input
                       name="name"
                       value={formData.name}
@@ -194,7 +194,7 @@ const ContactSection = () => {
                   </div>
 
                   <div className="flex flex-col gap-2">
-                    <label className="text-[#3f3f3f] text-sm font-bold">EMAIL</label>
+                    <label className="text-[#3f3f3f] text-sm font-bold" style={{ fontFamily: "MinecraftRegular, monospace" }}>EMAIL</label>
                     <input
                       type="email"
                       name="email"
@@ -208,7 +208,7 @@ const ContactSection = () => {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label className="text-[#3f3f3f] text-sm font-bold">SUBJECT</label>
+                  <label className="text-[#3f3f3f] text-sm font-bold" style={{ fontFamily: "MinecraftRegular, monospace" }}>SUBJECT</label>
                   <input
                     name="subject"
                     value={formData.subject}
@@ -220,7 +220,7 @@ const ContactSection = () => {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label className="text-[#3f3f3f] text-sm font-bold">MESSAGE</label>
+                  <label className="text-[#3f3f3f] text-sm font-bold" style={{ fontFamily: "MinecraftRegular, monospace" }}>MESSAGE</label>
                   <textarea
                     rows="4"
                     name="message"
@@ -237,6 +237,7 @@ const ContactSection = () => {
                   disabled={isSubmitting}
                   className="w-full py-4 text-white text-xl font-bold active:translate-y-1 transition-all"
                   style={{
+                    fontFamily: "MinecraftRegular, monospace",
                     backgroundColor: "#7c7c7c",
                     border: "4px solid #000",
                     boxShadow:
@@ -248,12 +249,12 @@ const ContactSection = () => {
                 </button>
 
                 {submitStatus === "success" && (
-                  <div className="text-[#008000] text-center font-bold animate-pulse">
+                  <div className="text-[#008000] text-center font-bold animate-pulse" style={{ fontFamily: "MinecraftRegular, monospace" }}>
                     ! ITEM SENT TO INBOX
                   </div>
                 )}
                 {submitStatus === "error" && (
-                  <div className="text-red-700 text-center font-bold animate-pulse">
+                  <div className="text-red-700 text-center font-bold animate-pulse" style={{ fontFamily: "MinecraftRegular, monospace" }}>
                     ✖ FAILED TO SEND — TRY AGAIN
                   </div>
                 )}

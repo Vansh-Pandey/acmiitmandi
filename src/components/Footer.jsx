@@ -75,7 +75,7 @@ const Footer = () => {
 
           {/* COLUMN 2: NAVIGATION */}
           <div className="flex flex-col gap-2">
-            <h4 className="text-[#adff2f] text-xs mb-2 font-bold uppercase tracking-widest">
+            <h4 className="text-[#adff2f] text-xs mb-2 font-bold uppercase tracking-widest" style={{ fontFamily: "MinecraftRegular, monospace" }}>
               Navigation
             </h4>
             <div
@@ -89,6 +89,7 @@ const Footer = () => {
                 }}
                 className={menuButtonStyle}
                 style={{
+                  fontFamily: "MinecraftRegular, monospace",
                   boxShadow:
                     "inset -2px -2px 0 #373737, inset 2px 2px 0 #afafaf",
                 }}
@@ -103,6 +104,7 @@ const Footer = () => {
                 }}
                 className={menuButtonStyle}
                 style={{
+                  fontFamily: "MinecraftRegular, monospace",
                   boxShadow:
                     "inset -2px -2px 0 #373737, inset 2px 2px 0 #afafaf",
                 }}
@@ -117,6 +119,7 @@ const Footer = () => {
                 }}
                 className={menuButtonStyle}
                 style={{
+                  fontFamily: "MinecraftRegular, monospace",
                   boxShadow:
                     "inset -2px -2px 0 #373737, inset 2px 2px 0 #afafaf",
                 }}
@@ -131,6 +134,7 @@ const Footer = () => {
                 }}
                 className={menuButtonStyle}
                 style={{
+                  fontFamily: "MinecraftRegular, monospace",
                   boxShadow:
                     "inset -2px -2px 0 #373737, inset 2px 2px 0 #afafaf",
                 }}
@@ -144,19 +148,19 @@ const Footer = () => {
           <div className="p-1" style={pixelBorder}>
             <div className="bg-[#c6c6c6] p-4 space-y-3">
               <div className="flex justify-between items-center">
-                <span className="text-[#3f3f3f] font-bold text-xs uppercase">
+                <span className="text-[#3f3f3f] font-bold text-xs uppercase" style={{ fontFamily: "MinecraftRegular, monospace" }}>
                   Server Status:
                 </span>
-                <span className="flex items-center gap-2 text-[#008000] text-xs font-bold animate-pulse">
+                <span className="flex items-center gap-2 text-[#008000] text-xs font-bold animate-pulse" style={{ fontFamily: "MinecraftRegular, monospace" }}>
                   <div className="w-2 h-2 bg-[#7cfc00] border border-black" />
                   ONLINE
                 </span>
               </div>
               <div className="bg-black/10 p-2 border-2 border-dashed border-[#888]">
-                <p className="text-[#3f3f3f] text-[10px] font-bold">
+                <p className="text-[#3f3f3f] text-[10px] font-bold" style={{ fontFamily: "MinecraftRegular, monospace" }}>
                   IP: PLAY.YOURSERVER.COM
                 </p>
-                <p className="text-[#3f3f3f] text-[10px] font-bold">
+                <p className="text-[#3f3f3f] text-[10px] font-bold" style={{ fontFamily: "MinecraftRegular, monospace" }}>
                   PLAYERS: 128 / 500
                 </p>
               </div>
@@ -166,7 +170,7 @@ const Footer = () => {
 
         {/* BOTTOM BAR */}
         <div className="mt-16 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-[10px] uppercase tracking-widest">
+          <p className="text-gray-500 text-[10px] uppercase tracking-widest" style={{ fontFamily: "MinecraftRegular, monospace" }}>
             © 2025 Minecraft Project. Not an official Minecraft product.
           </p>
 
