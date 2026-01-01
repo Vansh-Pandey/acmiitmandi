@@ -145,7 +145,7 @@ const AboutSection = () => {
               <h2
                 className="text-5xl md:text-6xl lg:text-7xl font-bold"
                 style={{
-                  fontFamily: "'Minecraft', monospace",
+                  fontFamily: "MinecraftTen, monospace",
                   textShadow: "4px 4px 0 #000000",
                   color: "#ffffff",
                   letterSpacing: "0.05em",
@@ -165,7 +165,7 @@ const AboutSection = () => {
             <p
               className="text-lg md:text-xl text-gray-300 leading-relaxed"
               style={{
-                fontFamily: "'Minecraft', monospace",
+                fontFamily: "MinecraftRegular, monospace",
                 textShadow: "2px 2px 0 #000000",
               }}
             >

@@ -4,10 +4,12 @@
 
 @import "tailwindcss";
 
-
+body {
+  font-family: 'MinecraftRegular', monospace;
+}
 @font-face {
     font-family: 'MinecraftRegular';
-    src: url('/fonts/MinecraftRegular.ttf') format('truetype');
+    src: url('./assets/fonts/MinecraftRegular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -15,7 +17,7 @@
 
 @font-face {
     font-family: 'MinecraftTen';
-    src: url('/fonts/MinecraftTen.ttf') format('truetype');
+    src: url('./assets/fonts/MinecraftTen.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
