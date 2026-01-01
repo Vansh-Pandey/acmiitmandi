@@ -21,17 +21,16 @@ const MinecraftHotbar = () => {
     { name: "", icon: "" },
   ];
 
-useEffect(() => {
-  let idx = navItems.findIndex((item) => item.path === location.pathname);
+  useEffect(() => {
+    let idx = navItems.findIndex((item) => item.path === location.pathname);
 
-  if (location.hash) {
-    const hashIdx = navItems.findIndex((item) => item.path === location.hash);
-    if (hashIdx !== -1) idx = hashIdx;
-  }
+    if (location.hash) {
+      const hashIdx = navItems.findIndex((item) => item.path === location.hash);
+      if (hashIdx !== -1) idx = hashIdx;
+    }
 
-  if (idx !== -1) setActiveIndex(idx);
-}, [location.pathname, location.hash]);
-
+    if (idx !== -1) setActiveIndex(idx);
+  }, [location.pathname, location.hash]);
 
   const handleNavigation = (index) => {
     const item = navItems[index];
@@ -133,6 +132,65 @@ useEffect(() => {
         * {
           image-rendering: pixelated;
           font-family: "Courier New", Courier, monospace;
+        }
+      `}</style>
+
+      {/* RESPONSIVE: scale only (NO TRANSLATION) — added without changing any existing lines */}
+      <style jsx global>{`
+        /* small desktop */
+        @media (max-width: 1024px) {
+          nav {
+            transform: scale(0.95) !important;
+            bottom: 14px !important;
+          }
+        }
+
+        /* tablet / phone */
+        @media (max-width: 640px) {
+          nav {
+            transform: scale(0.85) !important;
+            bottom: 12px !important;
+          }
+        }
+
+        /* very small phones */
+        @media (max-width: 420px) {
+          nav {
+            transform: scale(0.75) !important;
+            bottom: 8px !important;
+          }
+        }
+
+        /* very large screens */
+        @media (min-width: 1280px) {
+          nav {
+            transform: scale(1.05) !important;
+          }
+        }
+
+        /* make xp-bar narrower on tiny screens */
+        @media (max-width: 480px) {
+          [class*="w-[390px]"] {
+            width: 220px !important;
+          }
+        }
+
+        /* reduce icon & slot sizes on very small screens */
+        @media (max-width: 480px) {
+          .w-9 {
+            width: 18px !important;
+            height: 18px !important;
+          }
+
+          [class*="w-[42px]"] {
+            width: 36px !important;
+            height: 36px !important;
+          }
+
+          [class*="w-[50px]"] {
+            width: 44px !important;
+            height: 44px !important;
+          }
         }
       `}</style>
     </nav>

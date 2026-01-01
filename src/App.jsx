@@ -8,6 +8,7 @@ export default function App() {
     <>
       <MinecraftHotbar />
       <Routes>
+        <Route path="*" element={<HomePage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/team" element={<Team />} />
