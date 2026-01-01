@@ -9,11 +9,11 @@ const MinecraftHotbar = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const navItems = [
-    { name: "Home", icon: "/diamond.svg", path: "/" },
+    { name: "Home", icon: "/bed.svg", path: "/" },
     { name: "Team", icon: "/axe.svg", path: "/team" },
-    { name: "Events", icon: "/nametag.svg", path: "/events" },
-    { name: "About", icon: "/horn.svg", path: "#about" },
-    { name: "Contact", icon: "/emerald.png", path: "#contact" },
+    { name: "Events", icon: "/diamond-helmet.svg", path: "/events" },
+    { name: "About", icon: "/ender-eye.svg", path: "#about" },
+    { name: "Contact", icon: "/diamond.svg", path: "#contact" },
     { name: "", icon: "" },
     { name: "", icon: "" },
     { name: "", icon: "" },
@@ -63,7 +63,7 @@ const MinecraftHotbar = () => {
       </div>
 
       {/* XP BAR IMAGE */}
-      <div className="relative w-[390px] mt-[16px] mb-1 select-none">
+      <div className="relative hotbar-xp-bar w-[390px] mt-[16px] mb-1 select-none">
         <img
           src="/xp_bar.png"
           alt="Minecraft XP Bar"
@@ -82,7 +82,7 @@ const MinecraftHotbar = () => {
 
       {/* HOTBAR */}
       <div className="relative flex items-center bg-[#00000066] border-[4px] border-black p-[1px]">
-        <div className="absolute inset-0 flex">
+        <div className="absolute inset-0 flex hotbar-dividers">
           {[...Array(8)].map((_, i) => (
             <div
               key={i}
@@ -100,18 +100,25 @@ const MinecraftHotbar = () => {
             }}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
-            className="relative w-[42px] h-[42px] flex items-center justify-center cursor-pointer z-10"
+            className="relative hotbar-slot w-[42px] h-[42px] cursor-pointer z-10"
+            style={{ 
+              display: "flex", 
+              alignItems: "center", 
+              justifyContent: "center" 
+            }}
           >
             {item.icon && (
               <img
                 src={item.icon}
                 alt={item.name}
                 draggable={false}
+                className="hotbar-icon"
                 style={{
                   width: "32px",
                   height: "32px",
                   imageRendering: "pixelated",
-                  transform: "translateZ(0)", // forces pixel snapping
+                  transform: "translateZ(0)",
+                  display: "block"
                 }} 
               />
 
@@ -121,7 +128,7 @@ const MinecraftHotbar = () => {
 
         {/* SELECTOR */}
         <div
-          className="absolute -top-[4px] -left-[4px] w-[50px] h-[50px] transition-all duration-75 ease-out pointer-events-none"
+          className="hotbar-selector absolute -top-[5px] -left-[5px] w-[50px] h-[50px] transition-all duration-75 ease-out pointer-events-none"
           style={{ transform: `translateX(${activeIndex * 42}px)` }}
         >
           <div className="absolute inset-0 border-[4px] border-[#FFFFFFEE]" />
@@ -154,7 +161,7 @@ const MinecraftHotbar = () => {
         /* tablet / phone */
         @media (max-width: 640px) {
           nav {
-            transform: scale(0.85) !important;
+            transform: scale(0.85)  !important;
             bottom: 12px !important;
           }
         }
@@ -162,7 +169,7 @@ const MinecraftHotbar = () => {
         /* very small phones */
         @media (max-width: 420px) {
           nav {
-            transform: scale(0.75) !important;
+            transform: scale(0.75)  !important;
             bottom: 8px !important;
           }
         }
@@ -170,33 +177,53 @@ const MinecraftHotbar = () => {
         /* very large screens */
         @media (min-width: 1280px) {
           nav {
-            transform: scale(1.05) !important;
+            transform: scale(1.05)  !important;
           }
         }
 
         /* make xp-bar narrower on tiny screens */
         @media (max-width: 480px) {
-          [class*="w-[390px]"] {
-            width: 220px !important;
+          .hotbar-xp-bar {
+            width: 360px !important;
           }
         }
 
-        /* reduce icon & slot sizes on very small screens */
+        /* reduce icon & slot sizes on very small screens AND adjust spacing */
         @media (max-width: 480px) {
-          .w-9 {
-            width: 18px !important;
-            height: 18px !important;
+          .hotbar-icon {
+            width: 28px !important;
+            height: 28px !important;
+            margin: 0 !important;
           }
 
-          [class*="w-[42px]"] {
+          .hotbar-slot {
             width: 36px !important;
             height: 36px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
           }
 
-          [class*="w-[50px]"] {
+          .hotbar-selector {
             width: 44px !important;
             height: 44px !important;
           }
+
+          /* Fix divider spacing */
+          .hotbar-dividers > div {
+            margin-left: 36px !important;
+          }
+
+          /* Fix selector animation to use 36px spacing */
+          .hotbar-selector {
+            transform: translateX(calc(var(--active-index, 0) * 36px)) !important;
+          }
+        }
+      `}</style>
+
+      <style jsx>{`
+        .hotbar-selector {
+          --active-index: ${activeIndex};
         }
       `}</style>
     </nav>
