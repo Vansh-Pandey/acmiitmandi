@@ -1,6 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const MinecraftHotbar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -17,38 +21,42 @@ const MinecraftHotbar = () => {
     { name: "", icon: "" },
   ];
 
-  useEffect(() => {
-    const handleKeyPress = (e) => {
-      const key = parseInt(e.key);
-      if (key >= 1 && key <= 9) {
-        setActiveIndex(key - 1);
-        handleNavigation(key - 1);
-      }
-    };
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, []);
+useEffect(() => {
+  let idx = navItems.findIndex((item) => item.path === location.pathname);
+
+  if (location.hash) {
+    const hashIdx = navItems.findIndex((item) => item.path === location.hash);
+    if (hashIdx !== -1) idx = hashIdx;
+  }
+
+  if (idx !== -1) setActiveIndex(idx);
+}, [location.pathname, location.hash]);
+
 
   const handleNavigation = (index) => {
     const item = navItems[index];
     if (!item || !item.path) return;
 
     if (item.path.startsWith("#")) {
-      document.querySelector(item.path)?.scrollIntoView({ behavior: "smooth" });
+      navigate(`/${item.path}`, { replace: true });
+      setTimeout(() => {
+        document
+          .querySelector(item.path)
+          ?.scrollIntoView({ behavior: "smooth" });
+      }, 50);
     } else {
-      window.location.href = item.path;
+      navigate(item.path);
     }
   };
 
   return (
     <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 select-none flex flex-col items-center z-900">
-      
       {/* HOVER LABEL */}
-      <div className="h-6 mb-2"> 
+      <div className="h-6 mb-2">
         {hoveredIndex !== null && navItems[hoveredIndex].name && (
-          <div 
+          <div
             className="text-white text-xl transition-opacity duration-150 ease-out"
-            style={{ textShadow: '2px 2px 0px #3f3f3f' }}
+            style={{ textShadow: "2px 2px 0px #3f3f3f" }}
           >
             {navItems[hoveredIndex].name}
           </div>
@@ -58,28 +66,30 @@ const MinecraftHotbar = () => {
       {/* XP BAR IMAGE */}
       <div className="relative w-[390px] mt-[16px] mb-1 select-none">
         <img
-          src="/xp_bar.png"   
+          src="/xp_bar.png"
           alt="Minecraft XP Bar"
           className="w-full h-auto pointer-events-none"
-          style={{ imageRendering: 'pixelated' }}
+          style={{ imageRendering: "pixelated" }}
         />
         <span
           className="absolute -top-6 left-1/2 -translate-x-1/2
                     text-[#7CFC00] text-lg font-extrabold"
           style={{
             textShadow:
-              '2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000',
+              "2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000",
           }}
-        >
-        </span>
+        ></span>
       </div>
-
 
       {/* HOTBAR */}
       <div className="relative flex items-center bg-[#00000066] border-[4px] border-black p-[1px]">
         <div className="absolute inset-0 flex">
           {[...Array(8)].map((_, i) => (
-            <div key={i} className="h-full w-[2px] bg-black/40" style={{ marginLeft: '42px' }} />
+            <div
+              key={i}
+              className="h-full w-[2px] bg-black/40"
+              style={{ marginLeft: "42px" }}
+            />
           ))}
         </div>
 
@@ -87,7 +97,6 @@ const MinecraftHotbar = () => {
           <div
             key={index}
             onClick={() => {
-              setActiveIndex(index);
               handleNavigation(index);
             }}
             onMouseEnter={() => setHoveredIndex(index)}
@@ -105,9 +114,8 @@ const MinecraftHotbar = () => {
           </div>
         ))}
 
-
         {/* SELECTOR */}
-        <div 
+        <div
           className="absolute -top-[4px] -left-[4px] w-[50px] h-[50px] transition-all duration-75 ease-out pointer-events-none"
           style={{ transform: `translateX(${activeIndex * 42}px)` }}
         >
@@ -118,13 +126,13 @@ const MinecraftHotbar = () => {
       </div>
 
       <style jsx global>{`
-        body { 
-          background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
+        body {
+          background-image: url("https://www.transparenttextures.com/patterns/dark-matter.png");
           background-color: #4a5a3a;
         }
-        * { 
-          image-rendering: pixelated; 
-          font-family: 'Courier New', Courier, monospace;
+        * {
+          image-rendering: pixelated;
+          font-family: "Courier New", Courier, monospace;
         }
       `}</style>
     </nav>

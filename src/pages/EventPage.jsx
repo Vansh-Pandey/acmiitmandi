@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { EventCard } from "../components/EventCard";
-import MinecraftHotbar from "../components/MinecraftHotbar";
+import { EventHotbar } from "../components/EventHotbar";
 import { PixelDivider } from "../components/PixelDivider";
 
 // ================= DATA SECTION =================
@@ -160,7 +160,6 @@ const ParticleOverlay = () => {
   );
 };
 
-
 // ================= MAIN COMPONENT =================
 
 export default function Events() {
@@ -206,14 +205,15 @@ export default function Events() {
 
   return (
     <div
-      className="min-h-screen relative overflow-x-hidden"
+      className="min-h-screen relative overflow-x-hidden pb-32"
       style={{
         fontFamily: "MinecraftRegular, monospace",
         color: "#f8fafc",
         backgroundColor: "#080a0f",
       }}
     >
-      <div className="fixed inset-0 bedrock-bg pointer-events-none z-0" /> 
+      <div className="fixed inset-0 bedrock-bg pointer-events-none z-0" />
+      <ParticleOverlay />
 
       <div className="relative z-10">
         <div className="relative h-[60vh] flex flex-col justify-center">
@@ -265,7 +265,7 @@ export default function Events() {
             <div className="flex flex-col items-center">
               <PixelDivider />
               <div className="mt-10 transition-transform hover:scale-105 duration-300">
-                <MinecraftHotbar
+                <EventHotbar
                   items={filterItems}
                   selectedIndex={selectedFilter}
                   onSelect={setSelectedFilter}
