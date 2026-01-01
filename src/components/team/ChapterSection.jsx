@@ -37,8 +37,9 @@ export const ChapterSection = ({ chapterName, members, description }) => {
         <section className="max-w-[1300px] mx-auto py-12 px-6 mb-16">
             {/* Chapter Header */}
             <div className="flex flex-col items-center text-center mb-12 gap-6">
-                <h2 className="font-silkscreen text-[clamp(1.2rem,3vw,1.6rem)] font-bold inline-flex items-center justify-center gap-4 text-white py-6 px-14 bg-[#6d6d6d] border-4"
+                <h2 className="text-[clamp(1.2rem,3vw,1.6rem)] font-bold inline-flex items-center justify-center gap-4 text-white py-6 px-14 bg-[#6d6d6d] border-4"
                     style={{
+                        fontFamily: "MinecraftRegular, monospace",
                         textShadow: '3px 3px 0 #000',
                         borderColor: '#fff #555 #555 #fff'
                     }}>
@@ -49,8 +50,11 @@ export const ChapterSection = ({ chapterName, members, description }) => {
                     />
                     {isAcm ? 'ACM Chapter' : 'ACM-W Chapter'}
                 </h2>
-                <p className="font-silkscreen text-[0.8rem] text-[#ccc] max-w-[600px] mx-auto leading-relaxed text-center"
-                    style={{ textShadow: '1px 1px 0 #000' }}>
+                <p className="text-[0.8rem] text-[#ccc] max-w-[600px] mx-auto leading-relaxed text-center"
+                    style={{ 
+                        fontFamily: "MinecraftRegular, monospace",
+                        textShadow: '1px 1px 0 #000' 
+                    }}>
                     {description}
                 </p>
             </div>
@@ -60,15 +64,19 @@ export const ChapterSection = ({ chapterName, members, description }) => {
                 {/* Leadership Carousel */}
                 {leadership.length > 0 && (
                     <div className="relative mb-8 pt-[60px]">
-                        <h3 className="font-silkscreen text-[1.3rem] text-mc-emerald mb-8 flex items-center gap-2 pb-[10px]"
-                            style={{ textShadow: '2px 2px 0 #000' }}>
+                        <h3 className="text-[1.3rem] text-mc-emerald mb-8 flex items-center gap-2 pb-[10px]"
+                            style={{ 
+                                fontFamily: "MinecraftRegular, monospace",
+                                textShadow: '2px 2px 0 #000' 
+                            }}>
                             <span className="text-mc-gold">★</span> Leadership
                         </h3>
                         <div className="relative overflow-hidden py-8">
                             <button
                                 onClick={() => scrollCarousel(-1)}
-                                className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-[#8b8b8b] text-white font-silkscreen text-2xl z-20 flex items-center justify-center border-4 transition-all hover:bg-[#9d9d9d] active:scale-95"
+                                className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-[#8b8b8b] text-white text-2xl z-20 flex items-center justify-center border-4 transition-all hover:bg-[#9d9d9d] active:scale-95"
                                 style={{
+                                    fontFamily: "MinecraftRegular, monospace",
                                     borderColor: '#fff #555 #555 #fff',
                                     textShadow: '1px 1px 0 #000'
                                 }}
@@ -83,8 +91,9 @@ export const ChapterSection = ({ chapterName, members, description }) => {
                             </div>
                             <button
                                 onClick={() => scrollCarousel(1)}
-                                className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-[#8b8b8b] text-white font-silkscreen text-2xl z-20 flex items-center justify-center border-4 transition-all hover:bg-[#9d9d9d] active:scale-95"
+                                className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-[#8b8b8b] text-white text-2xl z-20 flex items-center justify-center border-4 transition-all hover:bg-[#9d9d9d] active:scale-95"
                                 style={{
+                                    fontFamily: "MinecraftRegular, monospace",
                                     borderColor: '#fff #555 #555 #fff',
                                     textShadow: '1px 1px 0 #000'
                                 }}
@@ -98,8 +107,11 @@ export const ChapterSection = ({ chapterName, members, description }) => {
 
                 {/* Core Team Grid */}
                 <div className="pt-5">
-                    <h3 className="font-silkscreen text-[1.3rem] text-mc-emerald mb-8 flex items-center gap-2 pb-[10px]"
-                        style={{ textShadow: '2px 2px 0 #000' }}>
+                    <h3 className="text-[1.3rem] text-mc-emerald mb-8 flex items-center gap-2 pb-[10px]"
+                        style={{ 
+                            fontFamily: "MinecraftRegular, monospace",
+                            textShadow: '2px 2px 0 #000' 
+                        }}>
                         <span className="text-mc-diamond">&lt;/&gt;</span> Core Team
                     </h3>
                     <div className="members-grid">

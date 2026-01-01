@@ -79,8 +79,11 @@ export const MemberCard = ({ member, index, isLeadership = false }) => {
                 style={{ transformStyle: 'preserve-3d' }}>
                 {/* Floating Name Tag */}
                 <div className="name-tag">
-                    <span className="font-silkscreen text-[0.72rem] text-white tracking-[0.5px]"
-                        style={{ textShadow: '1px 1px 0 #000' }}>
+                    <span className="text-[0.72rem] text-white tracking-[0.5px]"
+                        style={{ 
+                            fontFamily: "MinecraftRegular, monospace",
+                            textShadow: '1px 1px 0 #000' 
+                        }}>
                         {member.name}
                     </span>
                 </div>
@@ -118,7 +121,8 @@ export const MemberCard = ({ member, index, isLeadership = false }) => {
                     {/* Member Info */}
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 to-transparent pt-8 pb-2 px-2 text-center">
                         <h3 className="hidden">{member.name}</h3>
-                        <span className={`inline-flex items-center gap-1 font-silkscreen text-[0.6rem] py-1.5 px-2.5 bg-black/85 border-2 mt-2 uppercase tracking-[0.5px] before:content-['◆'] before:text-[0.5rem] ${roleStyles[roleClass]}`}>
+                        <span className={`inline-flex items-center gap-1 text-[0.6rem] py-1.5 px-2.5 bg-black/85 border-2 mt-2 uppercase tracking-[0.5px] before:content-['◆'] before:text-[0.5rem] ${roleStyles[roleClass]}`}
+                            style={{ fontFamily: "MinecraftRegular, monospace" }}>
                             {member.role}
                         </span>
                     </div>

@@ -47,16 +47,20 @@ export const HeroSection = () => {
             {/* Hero Content */}
             <div className="relative z-10 text-center px-8 max-w-[800px]">
                 <div className="bg-black/60 py-6 px-12 mb-6 border-4 border-[#333] inline-block">
-                    <h1 className="font-silkscreen text-[clamp(1.5rem,5vw,3rem)] font-bold leading-tight"
-                        style={{ textShadow: '3px 3px 0 #000' }}>
-                        <span className="block text-[#ddd] text-[0.5em] mb-1">Meet Our</span>
+                    <h1 className="text-[clamp(1.5rem,5vw,3rem)] font-bold leading-tight"
+                        style={{ 
+                            fontFamily: "MinecraftRegular, monospace",
+                            textShadow: '3px 3px 0 #000' 
+                        }}>
+                        <span className="block text-[#ddd] text-[0.5em] mb-1" style={{ fontFamily: "MinecraftRegular, monospace" }}>Meet Our</span>
                         <span className="block text-mc-gold"
-                            style={{ textShadow: '3px 3px 0 #8b5a00, 5px 5px 0 #000' }}>
+                            style={{ fontFamily: "MinecraftRegular, monospace", textShadow: '3px 3px 0 #8b5a00, 5px 5px 0 #000' }}>
                             Team
                         </span>
                     </h1>
                 </div>
-                <p className="font-silkscreen text-[clamp(0.7rem,1.5vw,0.9rem)] text-[#333] bg-white/85 py-4 px-6 mx-auto mb-8 max-w-[600px] border-[3px] border-[#555]">
+                <p className="text-[clamp(0.7rem,1.5vw,0.9rem)] text-[#333] bg-white/85 py-4 px-6 mx-auto mb-8 max-w-[600px] border-[3px] border-[#555]"
+                    style={{ fontFamily: "MinecraftRegular, monospace" }}>
                     The passionate minds behind ACM IIT Mandi – building a community of tech enthusiasts.
                 </p>
                 <div className="flex flex-col items-center">
