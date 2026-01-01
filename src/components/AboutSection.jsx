@@ -145,7 +145,7 @@ const AboutSection = () => {
               <h2
                 className="text-5xl md:text-6xl lg:text-7xl font-bold"
                 style={{
-                  fontFamily: "MinecraftTen, monospace",
+                  fontFamily: "MinecraftRegular, monospace",
                   textShadow: "4px 4px 0 #000000",
                   color: "#ffffff",
                   letterSpacing: "0.05em",
@@ -204,8 +204,8 @@ const AboutSection = () => {
 
                 {/* text */}
                 <div className="relative z-10">
-                  <h3 className="text-2xl font-bold mb-1">{item.title}</h3>
-                  <p className="text-gray-300 text-lg">{item.desc}</p>
+                  <h3 className="text-2xl font-bold mb-1" style={{ fontFamily: "MinecraftRegular, monospace" }}>{item.title}</h3>
+                  <p className="text-gray-300 text-lg" style={{ fontFamily: "MinecraftRegular, monospace" }}>{item.desc}</p>
                 </div>
               </div>
 

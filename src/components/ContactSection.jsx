@@ -106,7 +106,7 @@ const ContactSection = () => {
   const inputStyle = {
     backgroundColor: "#000",
     border: "2px solid #555",
-    fontFamily: "'Minecraft', monospace",
+    fontFamily: "MinecraftRegular, monospace",
     color: "#fff",
   };
 
@@ -174,7 +174,7 @@ const ContactSection = () => {
             <div className="p-6 md:p-10 space-y-6 bg-[#c6c6c6]">
               <h2
                 className="text-4xl md:text-5xl font-bold text-[#3f3f3f] text-center mb-8"
-                style={{ fontFamily: "'Minecraft', monospace" }}
+                style={{ fontFamily: "MinecraftRegular, monospace" }}
               >
                 MESSAGE BOX
               </h2>

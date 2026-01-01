@@ -163,7 +163,7 @@ export default function JoinSection() {
         transition={{ duration: 0.9 }}
         viewport={{ once: true }}
         className="relative z-20 mt-20 text-center px-6"
-        style={{ fontFamily: '"Press Start 2P", monospace' }}
+        style={{ fontFamily: "MinecraftRegular, monospace" }}
       >
         {/* 🔥 Torch Glow */}
         <motion.div
@@ -180,6 +180,7 @@ export default function JoinSection() {
         <h1
           className="text-yellow-400 text-5xl md:text-6xl mb-6"
           style={{
+            fontFamily: "MinecraftRegular, monospace",
             letterSpacing: "0.25em",
             fontWeight: "900",
             textShadow: `
@@ -196,7 +197,7 @@ export default function JoinSection() {
           JOIN OUR COMMUNITY
         </h1>
 
-        <p className="text-neutral-300 text-[16px] leading-[2.2] max-w-2xl mx-auto font-semibold">
+        <p className="text-neutral-300 text-[16px] leading-[2.2] max-w-2xl mx-auto font-semibold" style={{ fontFamily: "MinecraftRegular, monospace" }}>
           Build. Learn. Compete. <br />
           Become part of the ACM Student Chapter at IIT Mandi.
         </p>
@@ -235,7 +236,7 @@ export default function JoinSection() {
             backdropFilter: "blur(6px)",
             boxShadow:
               "inset -4px -4px 0 rgba(0,0,0,0.7), inset 4px 4px 0 rgba(255,255,255,0.05)",
-            fontFamily: '"Press Start 2P", monospace',
+            fontFamily: "MinecraftRegular, monospace",
           }}
         >
           {/* PERKS */}
@@ -272,7 +273,7 @@ export default function JoinSection() {
                 >
                   {perk.icon}
                 </motion.span>
-                <span className="text-[16px] tracking-widest text-neutral-200">
+                <span className="text-[16px] tracking-widest text-neutral-200" style={{ fontFamily: "MinecraftRegular, monospace" }}>
                   {perk.text}
                 </span>
               </motion.div>
@@ -305,7 +306,7 @@ export default function JoinSection() {
             >
               {confetti === "ig" && <PixelConfetti />}
               <InstagramPixel />
-              <span className="text-[12px]">INSTAGRAM</span>
+              <span className="text-[12px]" style={{ fontFamily: "MinecraftRegular, monospace" }}>INSTAGRAM</span>
             </motion.a>
 
             <motion.a
@@ -332,7 +333,7 @@ export default function JoinSection() {
             >
               {confetti === "li" && <PixelConfetti />}
               <LinkedInPixel />
-              <span className="text-[12px]">LINKEDIN</span>
+              <span className="text-[12px]" style={{ fontFamily: "MinecraftRegular, monospace" }}>LINKEDIN</span>
             </motion.a>
           </div>
         </motion.div>

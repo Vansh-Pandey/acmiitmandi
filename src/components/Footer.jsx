@@ -59,13 +59,13 @@ const Footer = () => {
           <div className="space-y-4">
             <h3
               className="text-2xl font-bold text-white tracking-tighter"
-              style={{ fontFamily: "'Minecraft', monospace" }}
+              style={{ fontFamily: "MinecraftRegular, monospace" }}
             >
               ACM <span className="text-[#7cfc00]">CHAPTER</span>
             </h3>
             <p
               className="text-gray-400 text-sm leading-relaxed"
-              style={{ fontFamily: "'Minecraft', monospace" }}
+              style={{ fontFamily: "MinecraftRegular, monospace" }}
             >
               Exploring the depths of the trial chambers since 2021. Built with
               <span className="text-red-500"> ❤️ </span>
@@ -80,7 +80,7 @@ const Footer = () => {
             </h4>
             <div
               className="grid grid-cols-2 gap-2"
-              style={{ fontFamily: "'Minecraft', monospace" }}
+              style={{ fontFamily: "MinecraftRegular, monospace" }}
             >
               <button
                 onClick={() => {
@@ -176,7 +176,7 @@ const Footer = () => {
                 key={social}
                 href="#"
                 className="text-gray-400 hover:text-[#7cfc00] text-xs transition-colors"
-                style={{ fontFamily: "'Minecraft', monospace" }}
+                style={{ fontFamily: "MinecraftRegular, monospace" }}
               >
                 [{social}]
               </a>
