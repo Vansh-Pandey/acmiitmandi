@@ -175,6 +175,7 @@ export function EventCard({
               fontSize: "12px",
               boxShadow: `0 0 15px ${theme.color}60`,
               backdropFilter: "blur(4px)",
+              fontFamily: "MinecraftRegular, monospace",
             }}
           >
             <span className="text-lg">{theme.icon}</span>
@@ -187,6 +188,7 @@ export function EventCard({
           <h3
             className="mb-4 relative z-10"
             style={{
+              fontFamily: "MinecraftRegular, monospace",
               fontSize: "18px",
               color: "#facc15",
               textShadow: "3px 3px 0 #000, 0 0 10px #facc15",
@@ -200,6 +202,7 @@ export function EventCard({
           <p
             className="mb-5 relative z-10"
             style={{
+              fontFamily: "MinecraftRegular, monospace",
               fontSize: "13px",
               opacity: 0.9,
               lineHeight: "1.6",
@@ -259,4 +262,3 @@ export function EventCard({
     </div>
   );
 }
-

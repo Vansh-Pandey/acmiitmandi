@@ -193,7 +193,7 @@ export default function Events() {
             className="px-10 py-3 bg-[#11071d] border-2 border-[#a16207] shadow-[6px_6px_0px_rgba(0,0,0,0.8)]"
             style={{ boxShadow: `0 0 20px ${glowColor}15` }}
           >
-            <h2 className={`text-xl tracking-[5px] font-bold ${textColor}`}>
+            <h2 className={`text-xl tracking-[5px] font-bold ${textColor}`} style={{ fontFamily: "MinecraftRegular, monospace" }}>
               {title}
             </h2>
           </div>
@@ -255,7 +255,7 @@ export default function Events() {
               <div className="px-16 py-8 bg-black/60 border-4 border-[#a16207]">
                 <h1
                   className="text-6xl mb-1 text-[#facc15]"
-                  style={{ textShadow: "4px 4px 0px #714304" }}
+                  style={{ fontFamily: "MinecraftRegular, monospace", textShadow: "4px 4px 0px #714304" }}
                 >
                   EVENTS
                 </h1>
