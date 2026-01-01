@@ -1,4 +1,10 @@
 /* Minecraft Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
+@import "tailwindcss";
+
+
 @font-face {
     font-family: 'MinecraftRegular';
     src: url('/fonts/MinecraftRegular.ttf') format('truetype');
@@ -14,6 +20,616 @@
     font-style: normal;
     font-display: swap;
 }
+/* Import Minecraft font - must come first */
 
-@import 'tailwindcss';
- 
+
+/* ===== Tailwind Theme - Minecraft Palette ===== */
+@theme {
+  --color-mc-grass-top: #5d9a3c;
+  --color-mc-dirt: #866043;
+  --color-mc-dirt-dark: #593d29;
+  --color-mc-stone: #8b8b8b;
+  --color-mc-stone-dark: #6b6b6b;
+  --color-mc-wood: #9c6b30;
+  --color-mc-gold: #f8b800;
+  --color-mc-diamond: #5decf5;
+  --color-mc-emerald: #17dd62;
+  --color-mc-sky-top: #7ba4db;
+  --color-mc-sky-bottom: #a5c8e8;
+  --color-text-white: #ffffff;
+  --color-text-shadow: #3f3f3f;
+
+  --font-silkscreen: 'Silkscreen', monospace;
+}
+
+/* ===== Base Styles ===== */
+@layer base {
+
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+  }
+
+  body {
+    font-family: var(--font-silkscreen);
+    background: var(--color-mc-dirt-dark);
+    color: var(--color-text-white);
+    line-height: 1.4;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Crect x='3' y='3' width='6' height='6' fill='%235decf5'/%3E%3Crect x='9' y='3' width='6' height='6' fill='%235decf5'/%3E%3Crect x='15' y='3' width='6' height='6' fill='%235decf5'/%3E%3Crect x='9' y='9' width='6' height='6' fill='%239c6b30'/%3E%3Crect x='15' y='15' width='6' height='6' fill='%239c6b30'/%3E%3Crect x='21' y='21' width='6' height='6' fill='%239c6b30'/%3E%3Crect x='27' y='27' width='6' height='6' fill='%239c6b30'/%3E%3Crect x='33' y='33' width='6' height='6' fill='%239c6b30'/%3E%3Crect x='3' y='9' width='6' height='6' fill='%233ac4b8'/%3E%3Crect x='21' y='3' width='6' height='6' fill='%233ac4b8'/%3E%3C/svg%3E") 0 0, auto;
+  }
+}
+
+/* ===== Keyframe Animations ===== */
+@keyframes cloudMove {
+  0% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+
+@keyframes bounceArrow {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes idleBob {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes idleBobFlipped {
+
+  0%,
+  100% {
+    transform: scaleX(-1) translateY(0);
+  }
+
+  50% {
+    transform: scaleX(-1) translateY(-3px);
+  }
+}
+
+@keyframes nameTagBob {
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-3px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spawnIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sparkle {
+
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: scale(1.15) rotate(90deg);
+    opacity: 1;
+  }
+}
+
+/* ===== Complex Component Styles ===== */
+@layer components {
+
+  /* Minecraft Clouds */
+  .cloud {
+    position: absolute;
+    background: #ffffff;
+    border: 3px solid #e8e8e8;
+    box-shadow: inset -6px -6px 0 #d8d8d8, inset 6px 6px 0 #ffffff;
+  }
+
+  .cloud::before,
+  .cloud::after {
+    content: '';
+    position: absolute;
+    background: #ffffff;
+    border: 3px solid #e8e8e8;
+  }
+
+  .cloud-1 {
+    width: 100px;
+    height: 36px;
+    top: 25px;
+    left: 8%;
+    animation: cloudMove 45s linear infinite;
+    will-change: transform;
+  }
+
+  .cloud-1::before {
+    width: 50px;
+    height: 30px;
+    top: -20px;
+    left: 20px;
+  }
+
+  .cloud-1::after {
+    width: 40px;
+    height: 24px;
+    top: -10px;
+    left: 60px;
+  }
+
+  .cloud-2 {
+    width: 140px;
+    height: 40px;
+    top: 50px;
+    left: 45%;
+    animation: cloudMove 55s linear infinite;
+    animation-delay: -15s;
+    will-change: transform;
+  }
+
+  .cloud-2::before {
+    width: 60px;
+    height: 35px;
+    top: -25px;
+    left: 35px;
+  }
+
+  .cloud-2::after {
+    width: 45px;
+    height: 28px;
+    top: -15px;
+    left: 85px;
+  }
+
+  .cloud-3 {
+    width: 80px;
+    height: 32px;
+    top: 35px;
+    left: 75%;
+    animation: cloudMove 40s linear infinite;
+    animation-delay: -25s;
+    will-change: transform;
+  }
+
+  .cloud-3::before {
+    width: 45px;
+    height: 26px;
+    top: -18px;
+    left: 15px;
+  }
+
+  .cloud-4 {
+    width: 110px;
+    height: 38px;
+    top: 80px;
+    left: 25%;
+    animation: cloudMove 50s linear infinite;
+    animation-delay: -30s;
+    will-change: transform;
+  }
+
+  .cloud-4::before {
+    width: 55px;
+    height: 32px;
+    top: -22px;
+    left: 25px;
+  }
+
+  .cloud-5 {
+    width: 90px;
+    height: 34px;
+    top: 15px;
+    left: 60%;
+    animation: cloudMove 42s linear infinite;
+    animation-delay: -8s;
+    will-change: transform;
+  }
+
+  .cloud-5::before {
+    width: 50px;
+    height: 28px;
+    top: -20px;
+    left: 18px;
+  }
+
+  /* Minecraft Oak Trees */
+  .mc-tree {
+    position: absolute;
+    z-index: 3;
+  }
+
+  .mc-tree::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 80px;
+    background: #6b4423;
+    border: 4px solid #4a3015;
+  }
+
+  .mc-tree::after {
+    content: '';
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 96px;
+    height: 96px;
+    background: #2d5a1d;
+    border: 6px solid #1a4010;
+    box-shadow: inset 8px 8px 0 #3d7a2d, inset -8px -8px 0 #1a4010;
+  }
+
+  .tree-1 {
+    bottom: 28%;
+    left: 8%;
+  }
+
+  .tree-2 {
+    bottom: 28%;
+    right: 12%;
+  }
+
+  .tree-3 {
+    bottom: 28%;
+    left: 25%;
+  }
+
+  /* Minecraft Cows */
+  .mc-cow {
+    position: absolute;
+    z-index: 4;
+    bottom: 28%;
+    width: 80px;
+    height: 64px;
+    background-image: url('/assets/minecraft-cow.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  .mc-cow-baby {
+    width: 45px;
+    height: 36px;
+    bottom: 27.5%;
+  }
+
+  .cow-1 {
+    left: 40%;
+    animation: idleBob 3s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .cow-2 {
+    left: 35%;
+    transform: scaleX(-1);
+    animation: idleBobFlipped 3.2s ease-in-out infinite;
+    animation-delay: -0.5s;
+    will-change: transform;
+  }
+
+  .cow-3 {
+    left: 70%;
+    animation: idleBob 2.9s ease-in-out infinite;
+    animation-delay: -1s;
+    will-change: transform;
+  }
+
+  .cow-4 {
+    left: 15%;
+    transform: scaleX(-1);
+    animation: idleBobFlipped 3.4s ease-in-out infinite;
+    animation-delay: -1.5s;
+    will-change: transform;
+  }
+
+  .baby-1 {
+    left: 45%;
+    z-index: 3;
+    animation: idleBob 2.5s ease-in-out infinite;
+    animation-delay: -0.3s;
+    will-change: transform;
+  }
+
+  .baby-2 {
+    left: 62%;
+    z-index: 3;
+    transform: scaleX(-1);
+    animation: idleBobFlipped 2.6s ease-in-out infinite;
+    animation-delay: -0.8s;
+    will-change: transform;
+  }
+
+  /* Minecraft Steve */
+  .mc-steve {
+    position: absolute;
+    z-index: 5;
+    bottom: 28%;
+    left: 78%;
+    width: 50px;
+    height: 110px;
+    background-image: url('/assets/minecraft-steve.png');
+    background-position: left top;
+    background-size: 500px auto;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    transform: scaleX(-1);
+  }
+
+  /* Minecraft Water */
+  .mc-water {
+    position: absolute;
+    z-index: 3;
+    bottom: calc(30% - 35px);
+    left: 48%;
+    width: 180px;
+    height: 35px;
+    background: linear-gradient(180deg, #2878b8 0%, #1a5a8a 40%, #0d3d5c 100%);
+    box-shadow: inset 4px 3px 0 rgba(100, 180, 220, 0.35), inset -3px -3px 0 rgba(0, 30, 60, 0.4);
+  }
+
+  /* Ground Layer */
+  .ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background: linear-gradient(180deg, var(--color-mc-grass-top) 0%, var(--color-mc-grass-top) 15%, var(--color-mc-dirt) 15%, var(--color-mc-dirt) 100%);
+  }
+
+  .ground::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: repeating-linear-gradient(90deg, var(--color-mc-grass-top) 0px, var(--color-mc-grass-top) 16px, #4a8030 16px, #4a8030 32px);
+  }
+
+  .ground::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+      radial-gradient(circle at 10% 20%, #6d4a2d 6px, transparent 6px),
+      radial-gradient(circle at 25% 45%, #5a3d24 8px, transparent 8px),
+      radial-gradient(circle at 40% 15%, #6d4a2d 5px, transparent 5px),
+      radial-gradient(circle at 55% 60%, #5a3d24 7px, transparent 7px),
+      radial-gradient(circle at 70% 30%, #6d4a2d 6px, transparent 6px),
+      radial-gradient(circle at 85% 55%, #5a3d24 8px, transparent 8px),
+      radial-gradient(circle at 8% 40%, #9a7550 4px, transparent 4px),
+      radial-gradient(circle at 22% 65%, #9a7550 5px, transparent 5px);
+    pointer-events: none;
+  }
+
+  /* Carousel Track */
+  .carousel-track {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding: 1rem 3rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-track .member-card {
+    flex: 0 0 220px;
+    scroll-snap-align: center;
+    margin-top: 55px;
+  }
+
+  .carousel-track .name-tag {
+    box-shadow: 0 0 15px rgba(93, 236, 245, 0.4), 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .carousel-track .member-card:hover::before {
+    border-color: var(--color-mc-diamond);
+    box-shadow: 0 0 25px rgba(93, 236, 245, 0.5);
+  }
+
+  .carousel-track .member-card::after {
+    content: '✦';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1rem;
+    color: var(--color-mc-diamond);
+    opacity: 0;
+    transition: opacity 0.2s;
+    animation: sparkle 2s ease-in-out infinite;
+  }
+
+  .carousel-track .member-card:hover::after {
+    opacity: 1;
+  }
+
+  /* Members Grid */
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    perspective: 1000px;
+    padding-top: 10px;
+  }
+
+  /* Member Card */
+  .member-card {
+    position: relative;
+    perspective: 800px;
+    transform-style: preserve-3d;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    margin-top: 55px;
+  }
+
+  .member-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .member-card::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: transparent;
+    border: 3px solid transparent;
+    transition: all 0.2s ease;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .member-card:hover::before {
+    border-color: var(--color-mc-gold);
+    box-shadow: 0 0 20px rgba(248, 184, 0, 0.4);
+  }
+
+  /* Name Tag */
+  .name-tag {
+    position: absolute;
+    top: -48px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.75);
+    padding: 5px 14px;
+    border-radius: 2px;
+    white-space: nowrap;
+    z-index: 15;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    animation: nameTagBob 3s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .name-tag::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid rgba(0, 0, 0, 0.75);
+  }
+
+  /* Skin Frame */
+  .skin-frame {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 3px solid #4a3a2a;
+    box-shadow: inset 0 0 0 1px #2a2a2a, inset 0 0 20px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+  }
+
+  .skin-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(0, 0, 0, 0.2) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .skin-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(93, 154, 60, 0.15) 50%, transparent 100%);
+    animation: shimmer 2s infinite;
+    pointer-events: none;
+  }
+
+  .member-image.loaded~.skin-frame::after,
+  .skin-frame:has(.member-image.loaded)::after {
+    display: none;
+  }
+
+  /* Section Divider */
+  .divider-line {
+    flex: 1;
+    height: 4px;
+    background: repeating-linear-gradient(90deg, #3c3c3c 0px, #3c3c3c 8px, #5a5a5a 8px, #5a5a5a 16px);
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .members-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .members-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}

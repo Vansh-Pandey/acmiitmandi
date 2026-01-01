@@ -1,5 +1,11 @@
 [
   {
+    "name": "Arihant Kumar Jain",
+    "chapter": "ACM",
+    "role": "Core Member",
+    "image": "dataset/images/acm/arihant_kumar_jain.jpg"
+  },
+  {
     "name": "Vansh Pandey",
     "chapter": "ACM",
     "role": "Core Member",
@@ -16,12 +22,6 @@
     "chapter": "ACM",
     "role": "Coordinator",
     "image": "dataset/images/acm/kartik_verma.jpg"
-  },
-  {
-    "name": "Arihant Kumar Jain",
-    "chapter": "ACM",
-    "role": "Core Member",
-    "image": "dataset/images/acm/arihant_kumar_jain.jpg"
   },
   {
     "name": "Sharath Subramanya",

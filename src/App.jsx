@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import EventsPage from "./pages/EventPage";
 import MinecraftHotbar from "./components/MinecraftHotbar";
-
+import Team from "./pages/Team";
 export default function App() {
   return (
     <>
@@ -10,6 +10,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/events" element={<EventsPage />} />
+        <Route path="/team" element={<Team />} />
       </Routes>
     </>
   );
