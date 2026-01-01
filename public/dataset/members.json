@@ -6,12 +6,6 @@
     "image": "dataset/images/acm/arihant_kumar_jain.jpg"
   },
   {
-    "name": "Vansh Pandey",
-    "chapter": "ACM",
-    "role": "Core Member",
-    "image": "dataset/images/acm/vansh_pandey.jpg"
-  },
-  {
     "name": "Md Hasan Raza",
     "chapter": "ACM",
     "role": "Core Member",
@@ -46,6 +40,12 @@
     "chapter": "ACM",
     "role": "Core Member",
     "image": "dataset/images/acm/saksham_setia.jpg"
+  },
+  {
+    "name": "Vansh Pandey",
+    "chapter": "ACM",
+    "role": "Core Member",
+    "image": "dataset/images/acm/vansh_pandey.jpg"
   },
   {
     "name": "Garv Jain",
