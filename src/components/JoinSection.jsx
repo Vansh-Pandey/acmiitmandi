@@ -1,408 +1,342 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
 
+const perks = [
+  { text: "Hands-on Workshops", icon: "🛠️" },
+  { text: "Competitive Hackathons", icon: "⚔️" },
+  { text: "Guided Mentorship", icon: "📘" },
+  { text: "Real-world Projects", icon: "🧱" },
+  { text: "Creative Tech Community", icon: "💎" },
+];
 
-
-const VoxelMiniNew = ({
-  shirt = "#10B981",
-  hair = "#3C2F23",
-  accent = "#FACC15",
-}) => {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <motion.div
-      className="relative w-32 h-48 select-none"
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: [0, -3, 0] }}
-      transition={{
-        opacity: { duration: 0.6 },
-        y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-      }}
-      style={{ 
-        transform: 'perspective(800px) rotateX(5deg)',
-        filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.5))'
-      }}
-    >
-      {hovered && (
-        <motion.div
-          className="absolute -top-16 left-1/2 -translate-x-1/2 z-20"
-          initial={{ scale: 0, opacity: 0, y: 10 }}
-          animate={{ scale: 1, opacity: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        >
-          <div 
-            className="relative bg-gradient-to-br from-white to-gray-100 text-black text-xs px-4 py-2 border-4 border-neutral-800 shadow-xl"
-            style={{ fontFamily: '"Press Start 2P", "Courier New", monospace' }}
-          >
-            Join ACM!
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3 h-3 bg-white border-b-4 border-r-4 border-neutral-800 rotate-45" />
-          </div>
-        </motion.div>
-      )}
-
-      {/* Head with 3D effect */}
-      <motion.div
-        className="relative w-12 h-12 mx-auto"
-        animate={{ rotate: [0, 2, -2, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        style={{ 
-          transformStyle: 'preserve-3d',
-        }}
-      >
-        {/* Front face */}
-        <div
-          className="absolute inset-0 border-2"
-          style={{ 
-            backgroundColor: '#FFD7B5',
-            borderColor: '#D4A574',
-            boxShadow: 'inset -2px -2px 4px rgba(0,0,0,0.2), inset 2px 2px 4px rgba(255,255,255,0.3)'
-          }}
-        >
-          {/* Hair */}
-          <div
-            className="absolute -top-1 left-0 w-full h-4 border-b-2"
-            style={{ 
-              backgroundColor: hair,
-              borderColor: 'rgba(0,0,0,0.3)',
-              boxShadow: 'inset 0 -2px 4px rgba(0,0,0,0.3)'
-            }}
-          />
-          {/* Eyes with shine */}
-          <div className="absolute top-5 left-2.5 w-2 h-2 bg-black rounded-sm">
-            <div className="absolute top-0 right-0 w-1 h-1 bg-white/40" />
-          </div>
-          <div className="absolute top-5 right-2.5 w-2 h-2 bg-black rounded-sm">
-            <div className="absolute top-0 right-0 w-1 h-1 bg-white/40" />
-          </div>
-          {/* Nose */}
-          <div className="absolute top-7 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#D4A574]" 
-               style={{ boxShadow: '1px 1px 2px rgba(0,0,0,0.2)' }} />
-          {/* Mouth */}
-          <div className="absolute top-9 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-[#D4A574]/60 rounded-full" />
-        </div>
-        
-        {/* Side shadow for depth */}
-        <div className="absolute -right-1 top-0 w-1 h-12 bg-black/20" 
-             style={{ transform: 'skewY(-5deg)' }} />
-        <div className="absolute left-0 -bottom-1 w-12 h-1 bg-black/20" 
-             style={{ transform: 'skewX(-5deg)' }} />
-      </motion.div>
-
-      {/* Body with 3D shading */}
-      <div
-        className="relative w-14 h-14 mx-auto mt-1 border-2 flex items-center justify-center"
-        style={{ 
-          backgroundColor: shirt, 
-          borderColor: "#065F46",
-          boxShadow: 'inset -3px -3px 6px rgba(0,0,0,0.3), inset 2px 2px 4px rgba(255,255,255,0.1), 0 4px 8px rgba(0,0,0,0.3)'
-        }}
-      >
-        {/* Logo with glow */}
-        <motion.div
-          className="w-4 h-4 border-2 rounded-sm"
-          style={{ 
-            borderColor: accent,
-            boxShadow: `0 0 8px ${accent}60`
-          }}
-          animate={{ opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        />
-        
-        {/* Side panels for 3D effect */}
-        <div className="absolute -right-1 top-0 w-1 h-14 bg-black/30" 
-             style={{ transform: 'skewY(-8deg)' }} />
-        <div className="absolute left-0 -bottom-1 w-14 h-1 bg-black/30" 
-             style={{ transform: 'skewX(-8deg)' }} />
-      </div>
-
-      {/* Arms with 3D effect */}
-      <motion.div
-        className="absolute top-[60px] left-[4px] w-4 h-12 border"
-        style={{
-          backgroundColor: shirt,
-          borderColor: "#065F46",
-          transformOrigin: "top center",
-          boxShadow: 'inset -2px -2px 4px rgba(0,0,0,0.3), 2px 2px 4px rgba(0,0,0,0.2)'
-        }}
-        animate={{ rotate: [0, 6, -6] }}
-        transition={{ duration: 2.5, repeat: Infinity }}
-      />
-
-      <motion.div
-        className="absolute top-[60px] right-[4px] w-4 h-12 border"
-        style={{
-          backgroundColor: shirt,
-          borderColor: "#065F46",
-          transformOrigin: "top center",
-          boxShadow: 'inset 2px -2px 4px rgba(0,0,0,0.3), -2px 2px 4px rgba(0,0,0,0.2)'
-        }}
-        animate={{ rotate: [0, -6, 6] }}
-        transition={{ duration: 2.5, repeat: Infinity }}
-      />
-
-      {/* Legs with 3D effect */}
-      <div className="flex justify-center gap-1 mt-1">
-        <div className="w-5 h-8 bg-[#1F2937] border-2 border-[#111827]" 
-             style={{ boxShadow: 'inset -2px -2px 4px rgba(0,0,0,0.4), 2px 2px 4px rgba(0,0,0,0.3)' }} />
-        <div className="w-5 h-8 bg-[#1F2937] border-2 border-[#111827]" 
-             style={{ boxShadow: 'inset 2px -2px 4px rgba(0,0,0,0.4), -2px 2px 4px rgba(0,0,0,0.3)' }} />
-      </div>
-
-      {/* Enhanced shadow */}
-      <motion.div
-        className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-12 h-3 rounded-full"
-        style={{
-          background: 'radial-gradient(ellipse, rgba(0,0,0,0.5) 0%, transparent 70%)',
-          filter: 'blur(4px)'
-        }}
-        animate={{ scaleX: [1, 1.2, 1], opacity: [0.5, 0.7, 0.5] }}
-        transition={{ duration: 3, repeat: Infinity }}
-      />
-    </motion.div>
-  );
-};
-
-
-
-const PixelIcon = ({ pattern }) => (
-  <svg width="16" height="16" viewBox="0 0 16 16">
-    {pattern.map((p, i) =>
-      p ? (
-        <rect
-          key={i}
-          x={(i % 4) * 4}
-          y={Math.floor(i / 4) * 4}
-          width="4"
-          height="4"
-          fill="currentColor"
-        />
-      ) : null
-    )}
+/* Pixel Icons */
+const InstagramPixel = () => (
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+    <rect x="1" y="1" width="14" height="14" />
+    <rect x="4" y="4" width="8" height="8" fill="black" />
+    <rect x="6" y="6" width="4" height="4" />
   </svg>
 );
 
-const pixelIcons = [
-  [0,1,1,0, 1,1,1,1, 0,1,1,0, 0,1,1,0],
-  [1,0,1,0, 0,1,0,1, 1,0,1,0, 0,1,0,1],
-  [0,1,1,0, 1,0,0,1, 1,0,0,1, 0,1,1,0],
-  [1,1,1,1, 1,0,0,1, 1,0,0,1, 1,1,1,1],
-  [0,1,0,0, 1,1,1,0, 0,1,1,1, 0,0,1,0],
-  [0,1,0,0, 1,1,1,0, 1,1,1,0, 0,1,0,0],
-];
-
-/* ===============================
-   Join Page
-   =============================== */
-
-const cardStyles = [
-  { bg: "#1f2937", border: "#10B981" },
-  { bg: "#1e293b", border: "#3B82F6" },
-  { bg: "#2e1065", border: "#8B5CF6" },
-  { bg: "#3a2e0f", border: "#F59E0B" },
-  { bg: "#3a1020", border: "#EC4899" },
-  { bg: "#042f2e", border: "#14B8A6" },
-];
-const LinkedInPixelIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-    <rect x="1" y="1" width="3" height="3" />
-    <rect x="1" y="5" width="3" height="10" />
+const LinkedInPixel = () => (
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+    <rect x="1" y="1" width="3" height="14" />
     <rect x="6" y="6" width="3" height="9" />
     <rect x="10" y="6" width="5" height="3" />
     <rect x="10" y="10" width="5" height="5" />
   </svg>
 );
 
+/* 🔶 Pixel Confetti */
+const PixelConfetti = () => (
+  <div className="absolute inset-0 pointer-events-none overflow-hidden">
+    {[...Array(10)].map((_, i) => (
+      <motion.div
+        key={i}
+        className="absolute w-2 h-2 bg-yellow-400"
+        style={{
+          left: "50%",
+          top: "50%",
+        }}
+        initial={{ opacity: 0, x: 0, y: 0 }}
+        animate={{
+          opacity: [0, 1, 0],
+          x: Math.random() * 120 - 60,
+          y: Math.random() * -120,
+        }}
+        transition={{ duration: 0.6 }}
+      />
+    ))}
+  </div>
+);
 
-const Join = () => {
-  const [activeCard, setActiveCard] = useState(null);
-  const [fontLoaded, setFontLoaded] = React.useState(false);
+/* 🌟 Floating Particles Background */
+const FloatingParticles = () => {
+  const particles = [];
+  for (let i = 0; i < 30; i++) {
+    const size = Math.random() * 6 + 3;
+    const colors = ['#22c55e', '#3b82f6', '#facc15', '#a855f7', '#ef4444', '#14b8a6'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    const startX = Math.random() * 100;
+    const startY = Math.random() * 100;
 
-  React.useEffect(() => {
-   
-    const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap';
-    link.rel = 'stylesheet';
-    document.head.appendChild(link);
-
-    
-    if (document.fonts) {
-      document.fonts.load('10px "Press Start 2P"').then(() => {
-        setFontLoaded(true);
-      }).catch(() => {
-        
-        setFontLoaded(true);
-      });
-    } else {
-      
-      setTimeout(() => setFontLoaded(true), 1000);
-    }
-
-    return () => {
-   
-      if (link.parentNode) {
-        link.parentNode.removeChild(link);
-      }
-    };
-  }, []);
-
-  const benefits = [
-    "Hands-on Workshops",
-    "Competitive Hackathons",
-    "Guided Mentorship",
-    "Cool Projects",
-    "Creative Tech Guild",
-  ];
-
-  const pixelFont = '"Press Start 2P", "Courier New", monospace';
+    particles.push(
+      <motion.div
+        key={i}
+        className="absolute rounded-sm"
+        style={{
+          width: `${size}px`,
+          height: `${size}px`,
+          backgroundColor: randomColor,
+          boxShadow: `0 0 ${size * 3}px ${randomColor}`,
+          left: `${startX}%`,
+          top: `${startY}%`,
+        }}
+        animate={{
+          y: [0, -50, 0],
+          x: [0, Math.random() * 40 - 20, 0],
+          opacity: [0.3, 0.9, 0.3],
+          scale: [1, 1.3, 1],
+        }}
+        transition={{
+          duration: Math.random() * 5 + 5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: Math.random() * 3,
+        }}
+      />
+    );
+  }
 
   return (
-    <>
-      {!fontLoaded && (
-        <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50">
-          <div className="text-white text-sm">Loading pixel font...</div>
-        </div>
-      )}
-      <div
-        className="min-h-screen text-white bg-[#0f0f0f]
-        bg-[radial-gradient(circle_at_20%_30%,#2a2a2a_2px,transparent_2px)]
-        bg-[length:36px_36px]"
-        style={{ fontFamily: pixelFont }}
-      >
-      <header className="py-12 px-6 text-center">
-        <div className="flex justify-center gap-10 mb-4">
-          <VoxelMiniNew />
-          <VoxelMiniNew shirt="#3B82F6" hair="#111827" accent="#22D3EE" />
-          <VoxelMiniNew shirt="#8B5CF6" hair="#4B5563" accent="#F472B6" />
-        </div>
-
-        <h1 
-          className="text-2xl md:text-3xl text-yellow-400 mb-6"
-          style={{ 
-            fontFamily: pixelFont,
-            letterSpacing: '0.1em',
-            lineHeight: '1.6'
-          }}
-        >
-          Join Our Community
-        </h1>
-
-        <p 
-          className="max-w-2xl mx-auto text-neutral-300"
-          style={{ 
-            fontFamily: pixelFont,
-            fontSize: '10px',
-            lineHeight: '1.8'
-          }}
-        >
-          Learn, build, and grow with a collaborative student-driven
-          technical community at IIT Mandi.
-        </p>
-      </header>
-
-      <main className="max-w-5xl mx-auto px-6 py-6">
-        <h2 
-          className="text-center mb-8 text-emerald-400 uppercase"
-          style={{ 
-            fontFamily: pixelFont,
-            fontSize: '20px',
-            letterSpacing: '0.15em'
-          }}
-        >
-          What Members Get?
-        </h2>
-
-        <div className="flex flex-col gap-4 max-w-3xl mx-auto mb-16">
-          {benefits.map((item, idx) => {
-            const style = cardStyles[idx];
-            const isActive = activeCard === idx;
-
-            return (
-              <motion.div
-                key={item}
-                onClick={() => setActiveCard(isActive ? null : idx)}
-                whileHover={{
-                  scale: 1.03,
-                  boxShadow: `0 0 18px ${style.border}`,
-                }}
-                whileTap={{ scale: 0.97 }}
-                className="px-6 py-4 border-4 cursor-pointer transition-all"
-                style={{
-                  backgroundColor: style.bg,
-                  borderColor: style.border,
-                }}
-              >
-                <div className="flex items-center gap-4">
-                  <PixelIcon pattern={pixelIcons[idx]} />
-                  <span style={{ 
-                    fontFamily: pixelFont,
-                    fontSize: '12px',
-                    letterSpacing: '0.05em',
-                  }}>{item}</span>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        <div className="text-center mt-10">
-          <p 
-            className="mb-5 text-neutral-300"
-            style={{ 
-              fontFamily: pixelFont,
-              fontSize: '14px',
-              lineHeight: '1.8'
-            }}
-          >
-            Ready to be part of the community?
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            {/* Instagram */}
-            <a
-              href="https://www.instagram.com/acm_iitmandi/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-yellow-400 text-black font-bold
-                px-7 py-3 border-4 border-yellow-700
-                hover:shadow-[0_0_20px_rgba(248,184,0,0.6)]
-                transition-shadow"
-              style={{ 
-                fontFamily: pixelFont,
-                fontSize: '10px',
-                letterSpacing: '0.05em'
-              }}
-            >
-              <PixelIcon pattern={pixelIcons[1]} />
-              Instagram
-            </a>
-
-            {/* LinkedIn */}
-            <a
-              href="https://www.linkedin.com/company/acm-iit-mandi/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-blue-500 text-black font-bold
-                px-7 py-3 border-4 border-blue-800
-                hover:shadow-[0_0_20px_rgba(59,130,246,0.6)]
-                transition-shadow"
-              style={{ 
-                fontFamily: pixelFont,
-                fontSize: '10px',
-                letterSpacing: '0.05em'
-              }}
-            >
-              <LinkedInPixelIcon />
-              LinkedIn
-            </a>
-          </div>
-
-        </div>
-      </main>
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {particles}
     </div>
-    </>
   );
 };
 
-export default Join;
+export default function JoinSection() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
+  const [confetti, setConfetti] = useState(null);
+  const [hoveredIcon, setHoveredIcon] = useState(null);
+
+  return (
+    <section
+      ref={ref}
+      className="relative min-h-screen overflow-hidden flex flex-col items-center justify-start"
+    >
+
+      {/* BACKGROUND */}
+      <motion.div
+        className="absolute inset-0 bg-cover bg-center scale-110 z-0"
+        style={{
+          backgroundImage: "url(./bg5.png)",
+          imageRendering: "pixelated",
+          y: bgY,
+        }}
+      />
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          background: `
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.9) 10%,
+        rgba(0, 0, 0, 0.7) 40%,
+        rgba(0, 0, 0, 0.4) 60%,
+        rgba(0, 0, 0, 0) 70%
+      )
+    `,
+        }}
+      />
+
+      {/* BOTTOM → PURE BLACK FADE */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          background: `
+      linear-gradient(
+        to top,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.9) 15%,
+        rgba(0, 0, 0, 0.7) 35%,
+        rgba(0, 0, 0, 0.4) 55%,
+        rgba(0, 0, 0, 0) 75%
+      )
+    `,
+        }}
+      />
+      <div className="absolute inset-0 bg-black/45 z-0" />
+
+      {/* Floating Particles */}
+      <div className="absolute inset-0 z-10">
+        <FloatingParticles />
+      </div>
+
+      {/* TITLE + TORCH FLICKER */}
+      <motion.div
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9 }}
+        viewport={{ once: true }}
+        className="relative z-20 mt-20 text-center px-6"
+        style={{ fontFamily: '"Press Start 2P", monospace' }}
+      >
+        {/* 🔥 Torch Glow */}
+        <motion.div
+          className="absolute left-1/2 -translate-x-1/2 -top-10 w-24 h-24 rounded-full"
+          animate={{ opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          style={{
+            background:
+              "radial-gradient(circle, rgba(250,204,21,0.9), transparent 70%)",
+            filter: "blur(20px)",
+          }}
+        />
+
+        <h1
+          className="text-yellow-400 text-5xl md:text-6xl mb-6"
+          style={{
+            letterSpacing: "0.25em",
+            fontWeight: "900",
+            textShadow: `
+              4px 4px 0 #000,
+              6px 6px 0 #000,
+              8px 8px 0 #000,
+              10px 10px 0 #000,
+              0 0 40px rgba(250,204,21,1),
+              0 0 60px rgba(250,204,21,0.8),
+              0 0 80px rgba(250,204,21,0.6)
+            `,
+          }}
+        >
+          JOIN OUR COMMUNITY
+        </h1>
+
+        <p className="text-neutral-300 text-[16px] leading-[2.2] max-w-2xl mx-auto font-semibold">
+          Build. Learn. Compete. <br />
+          Become part of the ACM Student Chapter at IIT Mandi.
+        </p>
+      </motion.div>
+
+      {/* MAIN CONTENT */}
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 mt-20 mb-24 flex flex-col lg:flex-row items-center gap-16">
+        {/* PEOPLE */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="relative"
+          whileHover={{ scale: 1.02, rotate: 1 }}
+        >
+          <div className="absolute inset-0 blur-3xl bg-emerald-400/25 rounded-full" />
+          <motion.img
+            src="/people4.png"
+            alt="Community"
+            className="relative w-[420px] lg:w-[520px]"
+            style={{ imageRendering: "pixelated" }}
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </motion.div>
+
+        {/* PANEL */}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="relative max-w-xl w-full px-10 py-12 bg-black/40 border-4 border-black"
+          style={{
+            backdropFilter: "blur(6px)",
+            boxShadow:
+              "inset -4px -4px 0 rgba(0,0,0,0.7), inset 4px 4px 0 rgba(255,255,255,0.05)",
+            fontFamily: '"Press Start 2P", monospace',
+          }}
+        >
+          {/* PERKS */}
+          <div className="flex flex-col gap-6 mb-12">
+            {perks.map((perk, i) => (
+              <motion.div
+                key={perk.text}
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: i * 0.15,
+                  type: "spring",
+                  stiffness: 100
+                }}
+                viewport={{ once: true }}
+                onMouseEnter={() => setHoveredIcon(i)}
+                onMouseLeave={() => setHoveredIcon(null)}
+                whileHover={{
+                  scale: 1.12,
+                  boxShadow: "0 0 35px rgba(52,211,153,1), 0 0 50px rgba(52,211,153,0.7), 0 0 70px rgba(52,211,153,0.4)",
+                }}
+                whileTap={{ scale: 1.08 }}
+                className="flex items-center gap-6 bg-[#101010] border-4 border-neutral-700 px-6 py-5 cursor-pointer"
+              >
+                <motion.span
+                  className="text-2xl"
+                  animate={hoveredIcon === i ? {
+                    scale: [1, 1.3, 1.2, 1.3, 1],
+                    rotate: [0, -15, 15, -10, 0],
+                    y: [0, -8, -5, -8, 0]
+                  } : {}}
+                  transition={{ duration: 0.5 }}
+                >
+                  {perk.icon}
+                </motion.span>
+                <span className="text-[16px] tracking-widest text-neutral-200">
+                  {perk.text}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="flex flex-col sm:flex-row justify-center gap-6 relative">
+            <motion.a
+              href="https://www.instagram.com/acm_iitmandi/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onMouseEnter={() => setConfetti("ig")}
+              onMouseLeave={() => setConfetti(null)}
+              whileHover={{
+                scale: 1.05,
+                y: -3,
+                boxShadow: "0 8px 0 #000, 0 0 30px rgba(250,204,21,0.8)"
+              }}
+              whileTap={{
+                scale: 0.98,
+                y: 4,
+                boxShadow: "0 2px 0 #000"
+              }}
+              transition={{ duration: 0.1 }}
+              className="relative flex items-center gap-3 bg-yellow-400 text-black px-8 py-4 border-4 border-yellow-700"
+              style={{
+                boxShadow: "0 6px 0 #000"
+              }}
+            >
+              {confetti === "ig" && <PixelConfetti />}
+              <InstagramPixel />
+              <span className="text-[12px]">INSTAGRAM</span>
+            </motion.a>
+
+            <motion.a
+              href="https://www.linkedin.com/company/acm-iit-mandi/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onMouseEnter={() => setConfetti("li")}
+              onMouseLeave={() => setConfetti(null)}
+              whileHover={{
+                scale: 1.05,
+                y: -3,
+                boxShadow: "0 8px 0 #000, 0 0 30px rgba(59,130,246,0.8)"
+              }}
+              whileTap={{
+                scale: 0.98,
+                y: 4,
+                boxShadow: "0 2px 0 #000"
+              }}
+              transition={{ duration: 0.1 }}
+              className="relative flex items-center gap-3 bg-blue-500 text-black px-8 py-4 border-4 border-blue-800"
+              style={{
+                boxShadow: "0 6px 0 #000"
+              }}
+            >
+              {confetti === "li" && <PixelConfetti />}
+              <LinkedInPixel />
+              <span className="text-[12px]">LINKEDIN</span>
+            </motion.a>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
