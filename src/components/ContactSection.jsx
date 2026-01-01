@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
+import emailjs from "@emailjs/browser";
 
 /* ===================== */
 /* STEVE MODEL */
@@ -51,14 +52,50 @@ const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Prevent double submit
+    if (isSubmitting) return;
+
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      setTimeout(() => setSubmitStatus(null), 5000);
-    }, 1500);
+    setSubmitStatus(null);
+
+    emailjs
+      .send(
+        "service_h8wpetd",
+        "template_ee9p6lb",
+        {
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          subject: formData.subject.trim(),
+          message: formData.message.trim(),
+        },
+        "Bs_6oVesMmS7CqI06"
+      )
+      .then(() => {
+        setIsSubmitting(false);
+        setSubmitStatus("success");
+
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+
+        // Clear success message
+        setTimeout(() => setSubmitStatus(null), 5000);
+      })
+      .catch((error) => {
+        console.error("EmailJS Error:", error);
+        setIsSubmitting(false);
+        setSubmitStatus("error");
+
+        // Auto clear error
+        setTimeout(() => setSubmitStatus(null), 5000);
+      });
   };
+
 
   const pixelBorder = {
     boxShadow: "inset -4px -4px 0px #555, inset 4px 4px 0px #fff",
@@ -91,9 +128,8 @@ const ContactSection = () => {
 
       {/* TOP FADE */}
       <div
-        className={`absolute inset-0 z-0 transition-opacity duration-1000 ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
+        className={`absolute inset-0 z-0 transition-opacity duration-1000 ${isVisible ? "opacity-100" : "opacity-0"
+          }`}
         style={{
           background: `
             linear-gradient(
@@ -109,9 +145,8 @@ const ContactSection = () => {
 
       {/* BOTTOM FADE */}
       <div
-        className={`absolute inset-0 z-0 transition-opacity duration-1000 ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
+        className={`absolute inset-0 z-0 transition-opacity duration-1000 ${isVisible ? "opacity-100" : "opacity-0"
+          }`}
         style={{
           background: `
             linear-gradient(
@@ -130,11 +165,10 @@ const ContactSection = () => {
 
           {/* LEFT — FORM (ORIGINAL) */}
           <div
-            className={`transition-all duration-700 p-1 ${
-              isVisible
+            className={`transition-all duration-700 p-1 ${isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-20 opacity-0"
-            }`}
+              }`}
             style={pixelBorder}
           >
             <div className="p-6 md:p-10 space-y-6 bg-[#c6c6c6]">
@@ -218,15 +252,20 @@ const ContactSection = () => {
                     ! ITEM SENT TO INBOX
                   </div>
                 )}
+                {submitStatus === "error" && (
+                  <div className="text-red-700 text-center font-bold animate-pulse">
+                    ✖ FAILED TO SEND — TRY AGAIN
+                  </div>
+                )}
+
               </form>
             </div>
           </div>
 
           {/* RIGHT — STEVE MODEL */}
           <div
-            className={`flex items-center justify-center transition-all duration-1000 delay-300 ${
-              isVisible ? "scale-100 opacity-100" : "scale-75 opacity-0"
-            }`}
+            className={`flex items-center justify-center transition-all duration-1000 delay-300 ${isVisible ? "scale-100 opacity-100" : "scale-75 opacity-0"
+              }`}
           >
             <div className="w-[420px] h-[420px] md:w-[520px] md:h-[520px]">
               <Canvas camera={{ position: [0, 1.5, 5], fov: 50 }}>
