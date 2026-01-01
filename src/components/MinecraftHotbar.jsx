@@ -106,9 +106,15 @@ const MinecraftHotbar = () => {
               <img
                 src={item.icon}
                 alt={item.name}
-                className="w-9 h-9 object-contain drop-shadow-[2px_2px_0_rgba(0,0,0,0.5)]"
                 draggable={false}
+                style={{
+                  width: "32px",
+                  height: "32px",
+                  imageRendering: "pixelated",
+                  transform: "translateZ(0)", // forces pixel snapping
+                }} 
               />
+
             )}
           </div>
         ))}
