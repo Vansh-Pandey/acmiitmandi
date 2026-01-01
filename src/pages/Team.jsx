@@ -37,7 +37,7 @@ const Team = () => {
             {/* Main Content */}
             <main className="max-w-full mx-auto p-0 relative min-h-screen scroll-snap-align-start"
                 style={{
-                    background: "url('/src/assets/cave-background.png') center center / cover no-repeat fixed"
+                    background: "url('./cave-background.png') center center / cover no-repeat fixed"
                 }}>
                 {/* Cave transition overlay */}
                 <div className="absolute top-0 left-0 right-0 h-[200px] z-[1] pointer-events-none"
