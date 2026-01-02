@@ -164,7 +164,8 @@ const ParticleOverlay = () => {
 
 export default function Events() {
   const [selectedFilter, setSelectedFilter] = useState(0);
-   useEffect(() => {
+   
+  useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
   const filteredEvents = events.filter((event) => {

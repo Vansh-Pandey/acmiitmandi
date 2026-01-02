@@ -5,6 +5,7 @@ import ContactSection from '../components/ContactSection'
 import Footer from '../components/Footer'
 import JoinSection from '../components/JoinSection'
 const HomePage = () => {
+  
    useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
