@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { EventCard } from "../components/EventCard";
 import { EventHotbar } from "../components/EventHotbar";
 import { PixelDivider } from "../components/PixelDivider";
@@ -164,7 +164,9 @@ const ParticleOverlay = () => {
 
 export default function Events() {
   const [selectedFilter, setSelectedFilter] = useState(0);
-
+   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   const filteredEvents = events.filter((event) => {
     if (selectedFilter === 0) return true;
     return event.category === categoryMap[selectedFilter];

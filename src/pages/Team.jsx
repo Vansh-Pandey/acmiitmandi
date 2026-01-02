@@ -7,7 +7,9 @@ import { Footer } from '../components/team/Footer';
 const Team = () => {
     const [members, setMembers] = useState([]);
     const [loading, setLoading] = useState(true);
-
+     useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
     useEffect(() => {
         const fetchMembers = async () => {
             try {
